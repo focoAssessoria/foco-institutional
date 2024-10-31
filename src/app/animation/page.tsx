@@ -79,7 +79,7 @@ export default function Home() {
             height={500}
             src="/2.png"
           />
-          <div className="sticky top-0 z-[80] w-full h-screen flex justify-center">
+          <div className="sticky top-0 z-[80] w-full h-screen  flex justify-center">
             <motion.div
               className="w-full relative flex flex-col items-center rounded-lg py-16"
               animate={{ y: 0, scale: 1, opacity: 1 }}
