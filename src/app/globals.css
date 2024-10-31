@@ -13,7 +13,28 @@
     --foreground: #ededed;
   }
 }
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 
+/* Estilize o contêiner de logos */
+.marquee-container {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  animation: marquee-scroll 4s linear infinite;
+}
 body {
   color: var(--foreground);
   background: var(--background);
