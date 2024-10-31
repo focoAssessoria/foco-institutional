@@ -280,7 +280,7 @@ export default function Home() {
 
         <section className="flex flex-col py-16 px-24 relative items-center justify-center h-screen z-40 rounded-t-3xl -mt-20 w-full bg-[#0A0A0A] text-white pb-20">
           <Image
-            className=" absolute right-0 top-20 w-auto z-50 h-[20vh]"
+            className=" absolute right-0 top-20 w-auto z-50 h-[50vh]"
             alt=""
             width={500}
             height={500}

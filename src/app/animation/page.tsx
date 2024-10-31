@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Menu } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import "react-accessible-accordion/dist/fancy-example.css";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useAnimation, useTransform, useScroll } from "framer-motion";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
@@ -41,21 +41,54 @@ export default function Home() {
       scrollToRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
 
+  const imageVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+  const parentVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
   return (
     <div className="bg-[#0A0A0A] flex flex-col items-center w-full h-full">
       <main className="flex flex-col w-full">
         <div className="bg-[#0A0A0A]/90 rounded-lg sticky  z-[9999] self-center  w-[80%]  top-2 flex items-center justify-between p-2">
-          <button className="w-1/5">
+          <button className="">
             <Menu />
           </button>
-          <div className="flex flex-row gap-4   items-center justify-center">
+          <div className="flex flex-row w-full justify-evenly   items-center ">
             <button className="text-sm">Calculadora de Lucro</button>
             <button className="text-sm">Serviços</button>
             <button className="text-sm">Inteligência Artificial</button>
             <button className="text-sm">História</button>
           </div>
-          <div className="flex  flex-row justify-between gap-4 items-center ">
+          <div className="flex  flex-row justify-between w-2/5 gap-4 items-center ">
             <button className="border text-[12px]  transition-all duration-200 hover:scale-[1.02] p-2 border-[#DC2626] rounded-md">
               ESPAÇO ADM
             </button>
@@ -146,12 +179,32 @@ export default function Home() {
                   <h1 className="text-2xl font-bold text-white">
                     CONSULTORIA EM SAÚDE ANIMAL
                   </h1>
-                  <button
-                    onClick={() => scrollToSessao2()}
-                    className=" mt-8 scale-90 hover:scale-100 transition-all duration-300 border p-1 border-white rounded-md "
-                  >
-                    Saiba Mais
-                  </button>
+                  <div className="flex flex-row gap-4">
+                    <button
+                      onClick={() => scrollToSessao2()}
+                      className=" mt-8 scale-90 hover:scale-100 transition-all duration-300  rounded-md "
+                    >
+                      <Image
+                        alt=""
+                        width={500}
+                        height={500}
+                        src={"/appleP.png"}
+                        className=" object-cover h-10 w-auto "
+                      />
+                    </button>
+                    <button
+                      onClick={() => scrollToSessao2()}
+                      className=" mt-8 scale-90 hover:scale-100 transition-all duration-300  rounded-md "
+                    >
+                      <Image
+                        alt=""
+                        width={500}
+                        height={500}
+                        src={"/googleP.png"}
+                        className=" object-cover h-10 w-auto  rounded-md"
+                      />
+                    </button>
+                  </div>
                 </motion.div>
                 <video
                   className="absolute left-0 top-0 z-[50] h-full w-full object-cover"
@@ -218,31 +271,61 @@ export default function Home() {
               src="/logoCortadaCinza.png"
             />
             <div className="h-full w-full flex flex-col z-[60] py-16 px-24 text-white">
-              <div className="flex gap-2 font-bold items-center flex-row">
-                <Image
-                  className="h-14 w-auto"
-                  alt=""
-                  width={500}
-                  height={500}
-                  src="/4.png"
-                />
-                <h2 className="font-bold text-2xl">SERVIÇOS</h2>
+              <div className="flex flex-row gap-2">
+                <motion.div
+                  className="flex gap-2 font-bold items-center flex-row"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <Image
+                    className="h-14 w-auto"
+                    alt=""
+                    width={500}
+                    height={500}
+                    src="/4.png"
+                  />
+                </motion.div>
+                <motion.div
+                  className="flex gap-2 font-bold items-center flex-row"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="font-bold text-2xl">SERVIÇOS</h2>
+                </motion.div>
               </div>
-              <h3 className="font-semibold text-start text-md mb-4">
+              <motion.h3
+                className="font-semibold text-start text-md mb-4"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 Explore the world through our portfolio of works and find what
                 you love here.
-              </h3>
-              <div className=" gap-8 mt-10 flex flex-col justify-between">
+              </motion.h3>
+
+              <motion.div
+                className="gap-8 mt-10 flex flex-col justify-between"
+                variants={parentVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {services.map((service, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className={` mb-2 mt-4 w-[80%] transition-all duration-300 ${
+                    className={`mb-2 mt-4 w-[80%] transition-all duration-300 ${
                       openIndex !== index ? "border-b border-b-white" : ""
                     }`}
+                    variants={childVariants}
                   >
                     <button
                       onClick={() => toggleAccordion(index)}
-                      className={`w-full text-left px-4 py-2  text-sm font-medium text-white flex justify-between  `}
+                      className="w-full text-left px-4 py-2 text-sm font-medium text-white flex justify-between"
                     >
                       <div
                         className={`flex flex-row gap-8 transition-all duration-300 ${
@@ -275,7 +358,7 @@ export default function Home() {
                       </div>
                     </button>
                     <div
-                      ref={(el: HTMLDivElement | null) => {
+                      ref={(el) => {
                         contentRefs.current[index] = el;
                       }}
                       className="px-4 text-sm items-center text-gray-200 flex flex-row gap-8 transition-all duration-500 ease-in-out max-h-0 overflow-hidden"
@@ -295,9 +378,9 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </section>
         </div>
@@ -305,21 +388,51 @@ export default function Home() {
           <div className="h-full absolute w-full z-20 bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30"></div>
           <div className="h-full absolute w-full bg-white/70 z-10"></div>
           <div className="h-full w-full flex flex-col z-[60]  py-16 px-24 text-[#DC2626] ">
-            <div className="flex gap-2 text-bold  items-center flex-row">
-              <Image
-                className="h-14 w-auto"
-                alt=""
-                width={500}
-                height={500}
-                src="/4.png"
-              />
-              <h2 className="font-bold text-2xl ">NOSSA HISTÓRIA</h2>
+            <div className="flex flex-row gap-2">
+              <motion.div
+                className="flex gap-2 font-bold items-center flex-row"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Image
+                  className="h-14 w-auto"
+                  alt=""
+                  width={500}
+                  height={500}
+                  src="/4.png"
+                />
+              </motion.div>
+              <motion.div
+                className="flex gap-2 font-bold items-center flex-row"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="font-bold text-2xl">NOSSA HISTÓRIA</h2>
+              </motion.div>
             </div>
-            <h3 className="font-semibold text-start text-md">
+            <motion.h3
+              className="font-semibold text-start text-md mb-4"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               (TEXTO GENÉRICO SOBRE HISTÓRIA DE ATÉ 2 LINHAS)
-            </h3>
+            </motion.h3>
+
+            <h3 className="font-semibold text-start text-md"></h3>
             <div className="w-full mt-10 mb-20 z-[60] flex flex-row justify-between">
-              <button className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group">
+              <motion.button
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group"
+              >
                 <div className="h-1/2 w-full "></div>
                 <div className="h-1/2 w-full items-center flex">
                   <span className="text-start group-hover:text-white transition-all duration-300 text-zinc-800 font-semibold">
@@ -331,8 +444,14 @@ export default function Home() {
                     <ArrowRight className="transition-all duration-300 group-hover:text-white text-[#DC2626]" />
                   </span>
                 </div>
-              </button>
-              <button className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group">
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group"
+              >
                 <div className="h-1/2 w-full "></div>
                 <div className="h-1/2 w-full items-center flex">
                   <span className="text-start group-hover:text-white transition-all duration-300 text-zinc-800 font-semibold">
@@ -344,8 +463,14 @@ export default function Home() {
                     <ArrowRight className="transition-all duration-300 group-hover:text-white text-[#DC2626]" />
                   </span>
                 </div>
-              </button>
-              <button className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group">
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                viewport={{ once: true }}
+                className="h-[350px] p-4 w-[350px] hover:bg-black/40 hover:scale-[1.05] flex flex-col gap-4 transition-all duration-300 bg-black/20 rounded-2xl relative group"
+              >
                 <div className="h-1/2 w-full "></div>
                 <div className="h-1/2 w-full items-center flex">
                   <span className="text-start group-hover:text-white transition-all duration-300 text-zinc-800 font-semibold">
@@ -357,14 +482,14 @@ export default function Home() {
                     <ArrowRight className="transition-all duration-300 group-hover:text-white text-[#DC2626]" />
                   </span>
                 </div>
-              </button>
+              </motion.button>
             </div>
           </div>
         </section>
 
         <section className="flex flex-col py-16 px-24 relative items-center justify-center h-screen z-40 rounded-t-3xl -mt-20 w-full bg-[#0A0A0A] text-white pb-20">
           <Image
-            className=" absolute right-0 top-20 w-auto z-50 h-[20vh]"
+            className=" absolute right-0 top-20 w-auto z-50 h-[50vh]"
             alt=""
             width={500}
             height={500}
@@ -372,25 +497,49 @@ export default function Home() {
           />
           <div className="flex flex-col w-full ">
             <div className="flex gap-2 text-bold items-center justify-center flex-row">
-              <Image
-                className="h-10 w-10"
-                alt=""
-                width={500}
-                height={500}
-                src="/4.png"
-              />
-              <h2 className="font-bold text-2xl ">
-                TECNOLOGIAS INOVADORAS NO SETOR
-              </h2>
+              <motion.div
+                className="flex gap-2 font-bold items-center justify-center flex-col"
+                variants={textVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <div className="flex flex-row-gap-2">
+                  <motion.div
+                    variants={imageVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <Image
+                      className="h-10 w-10"
+                      alt=""
+                      width={500}
+                      height={500}
+                      src="/4.png"
+                    />
+                  </motion.div>
+                  <h2 className="font-bold text-2xl">
+                    TECNOLOGIAS INOVADORAS NO SETOR
+                  </h2>
+                </div>
+                <h3 className="font-semibold text-center text-md">
+                  (TEXTO SOBRE TECNOLOGIAS INOVADORAS NO SETOR DE PECUÁRIA, DE
+                  ATÉ 3 LINHAS)
+                </h3>
+              </motion.div>
             </div>
-            <h3 className="font-semibold text-center text-md">
-              (TEXTO SOBRE TECNOLOGIAS INOVADORAS NO SETOR DE PECUÁRIA, DE ATÉ 3
-              LINHAS)
-            </h3>
-            <div className="mt-10 mb-10 flex flex-row w-full justify-evenly ">
+
+            <motion.div
+              className="mt-10 mb-10 flex flex-row w-full justify-evenly"
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <div className="h-[400px] w-[390px] bg-white rounded-2xl"></div>
               <div className="h-[400px] w-[390px] bg-white rounded-2xl"></div>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
