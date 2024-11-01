@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Menu } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import "react-accessible-accordion/dist/fancy-example.css";
-import { motion, useAnimation, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
