@@ -68,17 +68,17 @@ export function DeathCalculator({
     <>
       {openDeathCalculator && (
         <div
-          className="fixed bottom-0 left-0 right-0 top-0 z-[999999999999999999999] flex w-full items-center justify-center text-center transition-opacity duration-300 ease-in-out"
+          className="fixed bottom-0 left-0 right-0 top-0 z-[100] flex w-full items-center justify-center text-center transition-opacity duration-300 ease-in-out"
           style={{ opacity: openDeathCalculator ? 1 : 0 }}
         >
           <button
             onClick={() => setOpenDeathCalculator(false)}
-            className="absolute z-[9999999999] h-full w-full bg-black"
+            className="z- absolute h-full w-full bg-black/20 backdrop-blur"
           />
-          <div className="relative z-[999999999999] flex flex-col items-center justify-center">
+          <div className="relative z-[100] flex flex-col items-center justify-center">
             <div
               className={twMerge(
-                "relative z-[99999999] flex max-h-[80vh] w-[95%] max-w-[300px] flex-col rounded-md border border-gray-200 bg-white text-black shadow-md lg:w-[800px] lg:max-w-none",
+                "relative z-[100] flex max-h-[80vh] w-[95%] max-w-[300px] flex-col rounded-md border border-gray-200 bg-white text-black shadow-md lg:w-[800px] lg:max-w-none",
                 !openResults && "pb-4",
               )}
             >
