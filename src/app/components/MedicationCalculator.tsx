@@ -80,8 +80,6 @@ export function MedicationCalculator({
     },
   ]);
 
-  console.log("reasons", reasons);
-
   return (
     <>
       {openMedicationCalculator && (
