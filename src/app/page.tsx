@@ -90,8 +90,8 @@ export default function Home() {
                 <div className="z-[60] flex h-full w-1/2 flex-col items-end justify-end py-8 pl-24 pr-8 text-right">
                   <div className="flex w-[80%] items-end">
                     <h3 className="text-start">
-                      (AQUI DEVE FICAR UM TEXTO DE ATÉ 5 LINHAS SOBRE UMA
-                      CALCULADORA DE LUCRATIVIDADE)
+                      Calculadora desenvolvida para facilitar a tomada de
+                      decisões sobre o estado de saúde do rebanho.
                     </h3>
                   </div>
                   <button
@@ -99,15 +99,15 @@ export default function Home() {
                     className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
                   >
                     <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
-                      Calculadora de Lucratividade
+                      Calculadora de Mortalidade
                     </span>
                   </button>
                 </div>
                 <div className="z-[60] flex h-full w-1/2 flex-col items-end justify-end py-8 pl-8 pr-24 text-right">
                   <div className="flex w-[80%] items-start">
                     <h3 className="text-start">
-                      (AQUI DEVE FICAR UM TEXTO DE ATÉ 5 LINHAS SOBRE UMA
-                      CALCULADORA DE LUCRATIVIDADE)
+                      Ferramenta para auxiliar na quantidade de medicamentos com
+                      base no tamanho do rebanho e do motivo do tratamento.
                     </h3>
                   </div>
                   <button
@@ -115,7 +115,7 @@ export default function Home() {
                     className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
                   >
                     <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
-                      Calculadora de Lucratividade
+                      Calculadora de Medicamentos
                     </span>
                   </button>
                 </div>
