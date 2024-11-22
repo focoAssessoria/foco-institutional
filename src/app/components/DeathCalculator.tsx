@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import moment from "moment";
-import { Send } from "lucide-react";
+import { ChevronLeft, Send } from "lucide-react";
 
 interface DeathCalculatorProps {
   openDeathCalculator: boolean;
@@ -82,6 +82,13 @@ export function DeathCalculator({
                 !openResults && "pb-4",
               )}
             >
+              <ChevronLeft
+                className="absolute left-2 top-2 z-[100] cursor-pointer"
+                onClick={() => setOpenDeathCalculator(false)}
+              />
+              <span className="mx-auto w-max py-2 text-2xl font-semibold">
+                Calculadora de Mortalidade
+              </span>
               <div className="grid w-full grid-cols-3 gap-2 p-2">
                 <div className="col-span-1 flex flex-col">
                   <label className="mb-2 text-start text-sm font-semibold">
