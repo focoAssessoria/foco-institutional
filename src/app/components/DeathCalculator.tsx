@@ -73,7 +73,7 @@ export function DeathCalculator({
         >
           <button
             onClick={() => setOpenDeathCalculator(false)}
-            className="z- absolute h-full w-full bg-black/20 backdrop-blur"
+            className="absolute z-[100] h-full w-full bg-black/20 backdrop-blur"
           />
           <div className="relative z-[100] flex flex-col items-center justify-center">
             <div
