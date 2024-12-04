@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { DeathCalculator } from "./components/DeathCalculator";
 import { MedicationCalculator } from "./components/MedicationCalculator";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const router = useRouter();
   const services: string[] = ["Serviço 1", "Serviço 2", "Serviço 3"];
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [openDeathCalculator, setOpenDeathCalculator] = useState(false);
@@ -95,7 +97,7 @@ export default function Home() {
                     </h3>
                   </div>
                   <button
-                    onClick={() => setOpenDeathCalculator(true)}
+                    onClick={() => router.push("/mortality-calculator")}
                     className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
                   >
                     <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
