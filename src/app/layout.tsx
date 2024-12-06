@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata: Metadata = {
   title: "Foco Assessoria",
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${poppins.className} `}>{children}</body>
+      <CookiesProvider>
+        <body className={`${poppins.className} `}>{children}</body>
+      </CookiesProvider>
     </html>
   );
 }
