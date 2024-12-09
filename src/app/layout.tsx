@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import { CookiesProvider } from "next-client-cookies/server";
+import "swiper/css";
 
 export const metadata: Metadata = {
   title: "Foco Assessoria",
