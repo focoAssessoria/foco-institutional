@@ -161,11 +161,11 @@ export default function Home() {
                     className="absolute left-0 right-0 top-10 z-[90] flex scale-[0.4] flex-col items-center justify-center"
                   >
                     <Image
-                      className="h-max w-1/2 object-contain lg:mb-4 lg:mt-4 lg:h-28 lg:w-auto"
+                      className="h-max w-1/2 object-contain lg:mb-4 lg:mt-4 lg:h-max lg:w-52"
                       alt=""
                       width={500}
                       height={500}
-                      src="/5.png"
+                      src="/fullLogoWhite.png"
                     />
                     <h1 className="w-40 font-bold text-white lg:w-auto lg:text-2xl">
                       CONSULTORIA EM SAÚDE ANIMAL
@@ -199,7 +199,7 @@ export default function Home() {
                   </motion.div>
                   <video
                     className="absolute left-0 top-0 z-[50] h-full w-full object-cover"
-                    src={"/video.mp4"}
+                    src={"/video2.mp4"}
                     autoPlay
                     playsInline
                     preload="auto"
