@@ -1,3 +1,7 @@
+export default function Home() {
+  return <div>Home</div>;
+}
+
 // "use client";
 // import Image from "next/image";
 // import { ArrowRight, Menu } from "lucide-react";
