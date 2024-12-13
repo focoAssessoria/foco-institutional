@@ -12,6 +12,7 @@ import { MedicationCalculator } from "./components/MedicationCalculator";
 
 export default function Home() {
   const router = useRouter();
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [openMedicationCalculator, setOpenMedicationCalculator] =
     useState(false);
