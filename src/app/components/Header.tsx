@@ -4,7 +4,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-export function Header() {
+interface HeaderProps {
+  mobile?: boolean;
+}
+
+export function Header({ mobile }: HeaderProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   useEffect(() => {
     if (isSidebarOpen) {
@@ -18,7 +22,19 @@ export function Header() {
 
   return (
     <>
-      <div className="sticky top-2 z-[9999] flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 p-2">
+      <div
+        className={twMerge(
+          "sticky top-2 z-[9999] mx-auto flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 p-2",
+          mobile && "w-11/12 lg:hidden",
+        )}
+      >
+        <Image
+          className="h-8 w-max object-contain lg:hidden"
+          alt=""
+          width={500}
+          height={500}
+          src="/4.png"
+        />
         <button
           className="lg:hidden"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -46,7 +62,7 @@ export function Header() {
           isSidebarOpen ? "absolute" : "hidden",
         )}
       >
-        <div className="left-0 top-0 z-[10000] flex h-screen max-w-[350px] flex-col gap-8 bg-[#DC2626] p-4">
+        <div className="left-0 top-0 z-[10000] flex h-screen max-w-[350px] flex-col gap-8 bg-[#9a2626] p-4">
           <Image
             src="/logo.png"
             alt="logo"
