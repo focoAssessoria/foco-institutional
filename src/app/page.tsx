@@ -482,7 +482,7 @@ export default function Home() {
                               openIndex === index ? "opacity-100" : "opacity-0"
                             }`}
                           >
-                            <div className="h-32 w-40 p-1">
+                            <div className="hidden h-32 w-40 p-1 lg:block">
                               <div className="h-full w-full rounded-lg bg-white"></div>
                             </div>
                             <span>
@@ -579,7 +579,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative z-40 -mt-20 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20">
+            <section className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20">
               <Image
                 className="absolute right-0 top-20 z-50 h-[50vh] w-auto"
                 alt=""
@@ -634,7 +634,7 @@ export default function Home() {
             </section>
           </div>
         </main>
-        <footer className="mb-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg bg-black px-4 py-2 shadow shadow-[#8F1220] md:flex-row">
+        <footer className="my-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg border border-[#8F1220] bg-black px-4 py-2 shadow shadow-[#8F1220] md:flex-row">
           <button>
             <Image
               className="h-16 w-max object-contain transition-all duration-300 hover:scale-[1.05]"

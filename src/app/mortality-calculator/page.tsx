@@ -165,7 +165,7 @@ export default function MortalityCalculator() {
                 Taxa de Mortalidade!!
               </h1>
             </div>
-            <p className="text-lg">
+            <p className="text-center text-lg">
               Em apenas 4 minutos, saiba sua real Taxa de Mortalidade e
               identifique onde melhorar. Não perca tempo, insira seus dados
               agora e transforme sua gestão!

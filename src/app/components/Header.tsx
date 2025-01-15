@@ -62,7 +62,7 @@ export function Header({ mobile }: HeaderProps) {
           isSidebarOpen ? "absolute" : "hidden",
         )}
       >
-        <div className="left-0 top-0 z-[10000] flex h-screen max-w-[350px] flex-col gap-8 bg-[#9a2626] p-4">
+        <div className="left-0 top-0 z-[10000] flex h-screen max-w-[350px] flex-col gap-8 bg-[#9a2626] p-4 pt-12">
           <Image
             src="/logo.png"
             alt="logo"
