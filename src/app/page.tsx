@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col self-center">
                   <h1 className="text-center text-2xl font-bold text-black">
-                    Maximize a Saúde do Seu Rebanho e Seus Resultados
+                    MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
                   </h1>
                   <h2 className="text-center text-sm text-black">
                     Especialistas em saúde e sanidade de bovinos, oferecemos
@@ -288,7 +288,7 @@ export default function Home() {
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                   className="text-3xl font-bold text-black lg:text-4xl"
                 >
-                  Maximize a Saúde do Seu Rebanho e Seus Resultados
+                  MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
                 </motion.h1>
                 <motion.h2
                   initial={{ opacity: 0, y: -30 }}
