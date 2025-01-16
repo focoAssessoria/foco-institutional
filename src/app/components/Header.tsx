@@ -19,7 +19,18 @@ export function Header({ mobile }: HeaderProps) {
 
     return () => document.body.classList.remove("modal-open");
   }, [isSidebarOpen]);
-
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const scrollToBottom = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  };
   return (
     <>
       <div
@@ -42,10 +53,27 @@ export function Header({ mobile }: HeaderProps) {
           <Menu />
         </button>
         <div className="hidden w-full flex-row items-center justify-evenly lg:flex">
-          <button className="text-sm">Calculadora de Lucro</button>
-          <button className="text-sm">Serviços</button>
-          <button className="text-sm">Inteligência Artificial</button>
-          <button className="text-sm">História</button>
+          <button
+            onClick={() => scrollToBottom("calculator")}
+            className="text-sm"
+          >
+            Calculadora de medicamentos
+          </button>
+          <button
+            className="text-sm"
+            onClick={() => scrollToSection("service")}
+          >
+            Serviços
+          </button>
+          <button
+            onClick={() => scrollToSection("history")}
+            className="text-sm"
+          >
+            História
+          </button>
+          <button onClick={() => scrollToSection("ai")} className="text-sm">
+            Inteligência Artificial
+          </button>
         </div>
         <div className="hidden w-2/5 flex-row items-center justify-between gap-4 lg:flex">
           <button className="rounded-md border border-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]">

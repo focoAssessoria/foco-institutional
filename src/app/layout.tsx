@@ -3,9 +3,10 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import { CookiesProvider } from "next-client-cookies/server";
 import "swiper/css";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 export const metadata: Metadata = {
-  title: "Foco Assessoria",
+  title: "Foco Consultoria",
   icons: {
     icon: "/icon.png",
   },
@@ -21,6 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html>
+      <Script id="clarity-script" type="text/javascript">
+        {` (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "pux9hsgu7p");`}
+      </Script>
+      <GoogleAnalytics gaId={"G-WTC5FXCT9Y"} />
       <CookiesProvider>
         <body className={`${poppins.className} `}>{children}</body>
       </CookiesProvider>

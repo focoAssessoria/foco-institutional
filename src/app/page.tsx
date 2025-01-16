@@ -158,7 +158,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex flex-col self-center">
-                  <h1 className="text-center text-2xl font-bold text-black">
+                  <h1 className="text-center text-2xl font-bold uppercase text-black">
                     MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
                   </h1>
                   <h2 className="text-center text-sm text-black">
@@ -195,7 +195,7 @@ export default function Home() {
                       height={500}
                       src="/fullLogoWhite.png"
                     />
-                    <h1 className="text-center font-bold text-white">
+                    <h1 className="text-center font-bold uppercase text-white">
                       Maximize a Saúde do Seu Rebanho e Seus Resultados
                     </h1>
                     <div className="mx-auto flex w-2/3 items-center justify-center gap-4">
@@ -286,7 +286,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: -50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                  className="text-3xl font-bold text-black lg:text-4xl"
+                  className="text-3xl font-bold uppercase text-black lg:text-4xl"
                 >
                   MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
                 </motion.h1>
@@ -357,6 +357,7 @@ export default function Home() {
                     loop
                   />
                   <motion.div
+                    id="calculator"
                     style={{ opacity: reverseOpacity }}
                     className="z-[60] flex h-full w-full flex-col justify-evenly p-4 text-right lg:flex-row lg:items-end lg:justify-between"
                   >
@@ -415,7 +416,10 @@ export default function Home() {
                 </Marquee>
               </section>
 
-              <section className="relative flex w-full flex-col items-center justify-center bg-[#0A0A0A] text-white lg:h-screen">
+              <section
+                id="service"
+                className="relative flex w-full flex-col items-center justify-center bg-[#0A0A0A] text-white lg:h-screen"
+              >
                 <Image
                   className="absolute right-0 z-50 h-[50vh] w-auto"
                   alt=""
@@ -451,7 +455,7 @@ export default function Home() {
                     </motion.div>
                   </div>
                   <motion.h3
-                    className="text-md mb-4 text-start font-semibold"
+                    className="mb-4 text-start text-xl font-semibold"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
@@ -542,7 +546,10 @@ export default function Home() {
                 </div>
               </section>
             </div>
-            <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-b-3xl">
+            <section
+              id="history"
+              className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-b-3xl"
+            >
               <div className="absolute z-20 h-full w-full bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30"></div>
               <div className="absolute z-10 h-full w-full bg-white/70"></div>
               <div className="z-[60] flex h-full w-full flex-col px-4 py-8 text-[#DC2626] lg:px-24 lg:py-16">
@@ -632,7 +639,10 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20">
+            <section
+              id="ai"
+              className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20"
+            >
               <Image
                 className="absolute right-0 top-20 z-50 h-[50vh] w-auto"
                 alt=""
