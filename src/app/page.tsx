@@ -108,19 +108,19 @@ export default function Home() {
   const slides = [
     {
       id: 1,
-
+      image: "/newImg/h1.png",
       title:
         "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
     },
     {
       id: 2,
-
+      image: "/newImg/h2.png",
       title:
         "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
     },
     {
       id: 3,
-
+      image: "/newImg/h3.png",
       title:
         "Seguimos inovando e contribuindo para o futuro da pecuária , sempre ao lado de quem confia na nossa expertise.",
     },
@@ -196,7 +196,7 @@ export default function Home() {
                       src="/fullLogoWhite.png"
                     />
                     <h1 className="text-center font-bold text-white">
-                      CONSULTORIA EM SAÚDE ANIMAL
+                      Maximize a Saúde do Seu Rebanho e Seus Resultados
                     </h1>
                     <div className="mx-auto flex w-2/3 items-center justify-center gap-4">
                       <button
@@ -294,7 +294,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-                  className="mb-4 mt-4 text-black lg:text-center lg:text-lg"
+                  className="mb-4 mt-4 text-black lg:text-center lg:text-2xl"
                 >
                   Especialistas em saúde e sanidade de bovinos, oferecemos
                   soluções personalizadas para
@@ -318,7 +318,7 @@ export default function Home() {
                       src="/fullLogoWhite.png"
                     />
                     <h1 className="w-40 font-bold text-white lg:w-auto lg:text-2xl">
-                      CONSULTORIA EM SAÚDE ANIMAL
+                      Excelência em Saúde e Sanidade Bovina
                     </h1>
                     <div className="flex w-2/3 flex-row gap-4 lg:w-auto">
                       <button
@@ -601,18 +601,28 @@ export default function Home() {
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
                           viewport={{ once: true }}
-                          className="group relative flex h-full flex-col gap-4 rounded-2xl bg-black/20 p-4 pb-8 pt-12 transition-all duration-300 hover:scale-[1.05] hover:bg-black/40 md:pt-16 lg:h-64 lg:w-64 lg:pt-4 xl:h-[350px] xl:w-[350px]"
+                          className="group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl bg-black/20 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
                         >
-                          <div className="h-1/3 w-full md:h-1/2"></div>
-                          <div className="flex h-2/3 w-full items-center md:h-1/2">
-                            <span className="text-start font-semibold text-zinc-800 transition-all duration-300 group-hover:text-white">
-                              {item.title}
-                            </span>
-                          </div>
-                          <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
-                            <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
-                              <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
-                            </span>
+                          <Image
+                            alt=""
+                            width={400}
+                            height={400}
+                            src={item.image}
+                            className="absolute top-0 z-10 h-full w-full object-cover"
+                          />
+                          <div className="z-20 flex h-full w-full flex-col gap-4 bg-black/40 p-4 pb-8 pt-12 transition-all duration-300 hover:bg-black/0 md:pt-16 lg:pt-4">
+                            <div className="h-1/3 w-full md:h-1/2"></div>
+                            <div className="flex h-2/3 w-full items-center md:h-1/2">
+                              <span className="text-start font-semibold text-white transition-all duration-300 group-hover:text-white">
+                                {item.title}
+                              </span>
+                            </div>
+
+                            <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
+                              <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
+                                <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
+                              </span>
+                            </div>
                           </div>
                         </motion.button>
                       </SwiperSlide>
