@@ -76,10 +76,22 @@ export function Header({ mobile }: HeaderProps) {
           </button>
         </div>
         <div className="hidden w-2/5 flex-row items-center justify-between gap-4 lg:flex">
-          <button className="rounded-md border border-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]">
+          <button
+            onClick={() =>
+              (window.location.href =
+                "https://main.d389nhgdmdu5e2.amplifyapp.com")
+            }
+            className="rounded-md border border-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
+          >
             ESPAÇO ADM
           </button>
-          <button className="rounded-md border border-[#0A0A0A]/90 bg-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]">
+          <button
+            onClick={() =>
+              (window.location.href =
+                "https://main.d2eq0bpdou5t22.amplifyapp.com")
+            }
+            className="rounded-md border border-[#0A0A0A]/90 bg-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
+          >
             ESPAÇO DO CLIENTE
           </button>
         </div>

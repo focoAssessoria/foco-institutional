@@ -317,7 +317,7 @@ export default function Home() {
                       height={500}
                       src="/fullLogoWhite.png"
                     />
-                    <h1 className="w-40 font-bold text-white lg:w-auto lg:text-2xl">
+                    <h1 className="w-40 font-bold uppercase text-white lg:w-auto lg:text-2xl">
                       Excelência em Saúde e Sanidade Bovina
                     </h1>
                     <div className="flex w-2/3 flex-row gap-4 lg:w-auto">
@@ -523,22 +523,31 @@ export default function Home() {
                           }}
                           className="flex max-h-0 flex-row items-center gap-8 overflow-hidden px-4 text-sm text-gray-200 transition-all duration-500 ease-in-out"
                         >
-                          <div
-                            className={`flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300 ${
-                              openIndex === index ? "opacity-100" : "opacity-0"
-                            }`}
+                          <a
+                            href="https://api.whatsapp.com/send?phone=5534999050904&text=Ol%C3%A1,%20estou%20no%20site%20do%20FOCO%20e%20quero%20falar%20com%20algu%C3%A9m.%20%F0%9F%A4%A0"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300"
                           >
-                            <div className="hidden h-20 w-20 min-w-20 overflow-hidden rounded-lg md:h-32 md:w-40 lg:block">
-                              <Image
-                                className="h-20 w-20 rounded-lg object-cover md:h-32 md:w-40"
-                                width={400}
-                                height={400}
-                                alt=""
-                                src={service?.image || "/newImg/boi.png"}
-                              />
+                            <div
+                              className={`flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300 ${
+                                openIndex === index
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              }`}
+                            >
+                              <div className="hidden h-20 w-20 min-w-20 overflow-hidden rounded-lg md:h-32 md:w-40 lg:block">
+                                <Image
+                                  className="h-20 w-20 rounded-lg object-cover md:h-32 md:w-40"
+                                  width={400}
+                                  height={400}
+                                  alt=""
+                                  src={service?.image || "/newImg/boi.png"}
+                                />
+                              </div>
+                              <span>{service?.description}</span>
                             </div>
-                            <span>{service?.description}</span>
-                          </div>
+                          </a>
                         </div>
                       </motion.div>
                     ))}
@@ -604,6 +613,10 @@ export default function Home() {
                     {slides.map((item) => (
                       <SwiperSlide key={item.id}>
                         <motion.button
+                          onClick={() =>
+                            (window.location.href =
+                              "https://www.instagram.com/foco.saudeanimal/")
+                          }
                           initial={{ opacity: 0, y: 50 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
@@ -724,10 +737,22 @@ export default function Home() {
             />
           </button>
           <div className="flex h-full flex-col justify-center gap-1">
-            <button className="rounded-md border border-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white">
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d389nhgdmdu5e2.amplifyapp.com")
+              }
+              className="rounded-md border border-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
+            >
               ESPAÇO ADM
             </button>
-            <button className="rounded-md border border-[#8F1220] bg-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white">
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d2eq0bpdou5t22.amplifyapp.com")
+              }
+              className="rounded-md border border-[#8F1220] bg-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
+            >
               ESPAÇO DO CLIENTE
             </button>
           </div>
