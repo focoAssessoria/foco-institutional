@@ -695,7 +695,7 @@ export default function Home() {
                       alt=""
                       width={400}
                       height={400}
-                      src={"/newImg/Boi.png"}
+                      src={"/newImg/boi.png"}
                     />
                   </div>
                 </motion.div>
