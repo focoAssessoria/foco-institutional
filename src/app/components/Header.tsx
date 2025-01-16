@@ -110,7 +110,7 @@ export function Header({ mobile }: HeaderProps) {
             height={1000}
             className="h-max w-80 object-contain"
           />
-          <div className="flex flex-col gap-2">
+          <div className="flex w-full flex-col items-start gap-2 text-start">
             <button className="text-sm">Calculadora de Lucro</button>
             <button className="text-sm">Serviços</button>
             <button className="text-sm">Inteligência Artificial</button>
