@@ -75,7 +75,7 @@ export function Header({ mobile }: HeaderProps) {
             Inteligência Artificial
           </button>
         </div>
-        <div className="hidden w-2/5 flex-row items-center justify-between gap-4 lg:flex">
+        <div className="hidden w-2/5 flex-row items-center justify-end gap-4 lg:flex">
           <button
             onClick={() =>
               (window.location.href =
