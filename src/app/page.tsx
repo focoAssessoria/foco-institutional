@@ -16,7 +16,27 @@ export default function Home() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [openMedicationCalculator, setOpenMedicationCalculator] =
     useState(false);
-  const services: string[] = ["Serviço 1", "Serviço 2", "Serviço 3"];
+  const services = [
+    {
+      image: "/newImg/s1.jpg",
+      title: "Gestão Sanitária Avançada",
+      description:
+        "Monitoramento e controle de doenças para promover a saúde do rebanho, com foco na prevenção e redução de custos operacionais.",
+    },
+    {
+      image: "/newImg/nutrição.jpg",
+      title: "Otimização Nutricional Personalizada",
+      description:
+        "Elaboração de planos nutricionais estratégicos para aumentar a eficiência alimentar, melhorar o desempenho e fortalecer a produtividade.",
+    },
+    {
+      image: "/newImg/treinamento.jpeg",
+      title: "Capacitação em Manejo e Sanidade",
+      description:
+        "Treinamento especializado para equipes, abordando boas práticas de manejo, prevenção de doenças e técnicas modernas de cuidado animal.",
+    },
+    ,
+  ];
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleAccordion = (index: number): void => {
@@ -85,7 +105,26 @@ export default function Home() {
     },
   };
 
-  const slides = [0, 1, 2];
+  const slides = [
+    {
+      id: 1,
+
+      title:
+        "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
+    },
+    {
+      id: 2,
+
+      title:
+        "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
+    },
+    {
+      id: 3,
+
+      title:
+        "Seguimos inovando e contribuindo para o futuro da pecuária , sempre ao lado de quem confia na nossa expertise.",
+    },
+  ];
 
   return (
     <>
@@ -119,13 +158,13 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex flex-col self-center">
-                  <h1 className="text-2xl font-bold text-black">
-                    CONSULTORIA EM SAÚDE ANIMAL
+                  <h1 className="text-center text-2xl font-bold text-black">
+                    Maximize a Saúde do Seu Rebanho e Seus Resultados
                   </h1>
-                  <h2 className="text-sm text-black">
-                    CONSULTORIA EM SAÚDE ANIMAL, CONSULTORIA EM SAÚDE ANIMAL
-                    CONSULTORIA EM <br /> SAÚDE ANIMAL CONSULTORIA EM SAÚDE
-                    ANIMAL
+                  <h2 className="text-center text-sm text-black">
+                    Especialistas em saúde e sanidade de bovinos, oferecemos
+                    soluções personalizadas para aumentar a produtividade,
+                    reduzir perdas e garantir o bem-estar animal.
                   </h2>
                 </div>
                 <div className="z-[60] flex w-full items-center justify-center gap-4">
@@ -249,7 +288,7 @@ export default function Home() {
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                   className="text-3xl font-bold text-black lg:text-4xl"
                 >
-                  CONSULTORIA EM SAÚDE ANIMAL
+                  Maximize a Saúde do Seu Rebanho e Seus Resultados
                 </motion.h1>
                 <motion.h2
                   initial={{ opacity: 0, y: -30 }}
@@ -257,8 +296,10 @@ export default function Home() {
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
                   className="mb-4 mt-4 text-black lg:text-center lg:text-lg"
                 >
-                  CONSULTORIA EM SAÚDE ANIMAL, CONSULTORIA EM SAÚDE ANIMAL
-                  CONSULTORIA EM <br /> SAÚDE ANIMAL CONSULTORIA EM SAÚDE ANIMAL
+                  Especialistas em saúde e sanidade de bovinos, oferecemos
+                  soluções personalizadas para
+                  <br /> aumentar a produtividade, reduzir perdas e garantir o
+                  bem-estar animal.
                 </motion.h2>
 
                 <motion.div
@@ -364,12 +405,12 @@ export default function Home() {
               <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:px-24 lg:py-16">
                 <Marquee gradient={false} pauseOnHover speed={100}>
                   <div className="flex space-x-24 px-24 text-xl font-bold text-[#585858]">
-                    <span>LOGO NAME</span>
-                    <span>LOGO NAME</span>
-                    <span>LOGO NAME</span>
-                    <span>LOGO NAME</span>
-                    <span>LOGO NAME</span>
-                    <span>LOGO NAME</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
                   </div>
                 </Marquee>
               </section>
@@ -416,8 +457,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    Explore the world through our portfolio of works and find
-                    what you love here.
+                    Soluções Sob Medida para a Gestão do Seu Rebanho
                   </motion.h3>
 
                   <motion.div
@@ -447,7 +487,9 @@ export default function Home() {
                             }`}
                           >
                             <span>0{index + 1}</span>
-                            <span className="text-xl font-bold">{service}</span>
+                            <span className="text-xl font-bold">
+                              {service?.title}
+                            </span>
                           </div>
                           <div
                             className={`border ${
@@ -482,14 +524,16 @@ export default function Home() {
                               openIndex === index ? "opacity-100" : "opacity-0"
                             }`}
                           >
-                            <div className="hidden h-32 w-40 p-1 lg:block">
-                              <div className="h-full w-full rounded-lg bg-white"></div>
+                            <div className="hidden h-20 w-20 min-w-20 overflow-hidden rounded-lg md:h-32 md:w-40 lg:block">
+                              <Image
+                                className="h-20 w-20 rounded-lg object-cover md:h-32 md:w-40"
+                                width={400}
+                                height={400}
+                                alt=""
+                                src={service?.image || "/newImg/boi.png"}
+                              />
                             </div>
-                            <span>
-                              Explore the world through our portfolio of works
-                              and find what you love here. This is a detailed
-                              description of {service}.
-                            </span>
+                            <span>{service?.description}</span>
                           </div>
                         </div>
                       </motion.div>
@@ -535,7 +579,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  (TEXTO GENÉRICO SOBRE HISTÓRIA DE ATÉ 2 LINHAS)
+                  Uma história guiada por compromisso e crescimento.
                 </motion.h3>
 
                 <h3 className="text-md text-start font-semibold"></h3>
@@ -550,20 +594,19 @@ export default function Home() {
                       },
                     }}
                   >
-                    {slides.map((index) => (
-                      <SwiperSlide key={index}>
+                    {slides.map((item) => (
+                      <SwiperSlide key={item.id}>
                         <motion.button
                           initial={{ opacity: 0, y: 50 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
                           viewport={{ once: true }}
-                          className="group relative flex flex-col gap-4 rounded-2xl bg-black/20 p-4 pt-16 transition-all duration-300 hover:scale-[1.05] hover:bg-black/40 lg:h-64 lg:w-64 lg:pt-4 xl:h-[350px] xl:w-[350px]"
+                          className="group relative flex h-full flex-col gap-4 rounded-2xl bg-black/20 p-4 pb-8 pt-12 transition-all duration-300 hover:scale-[1.05] hover:bg-black/40 md:pt-16 lg:h-64 lg:w-64 lg:pt-4 xl:h-[350px] xl:w-[350px]"
                         >
-                          <div className="h-1/2 w-full"></div>
-                          <div className="flex h-1/2 w-full items-center">
+                          <div className="h-1/3 w-full md:h-1/2"></div>
+                          <div className="flex h-2/3 w-full items-center md:h-1/2">
                             <span className="text-start font-semibold text-zinc-800 transition-all duration-300 group-hover:text-white">
-                              Lorem ipsum dolor sit amet consectetur adipisicing
-                              elit.
+                              {item.title}
                             </span>
                           </div>
                           <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
@@ -611,12 +654,12 @@ export default function Home() {
                       />
                     </motion.div>
                     <h2 className="text-2xl font-bold">
-                      TECNOLOGIAS INOVADORAS NO SETOR
+                      Tecnologia que Revoluciona a Pecuária
                     </h2>
                   </div>
-                  <h3 className="text-center font-semibold">
-                    (TEXTO SOBRE TECNOLOGIAS INOVADORAS NO SETOR DE PECUÁRIA, DE
-                    ATÉ 3 LINHAS)
+                  <h3 className="font-semibold">
+                    Inovação em saúde e sanidade bovina para uma gestão mais
+                    eficiente e produtiva.
                   </h3>
                 </motion.div>
 
@@ -627,8 +670,24 @@ export default function Home() {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <div className="h-64 w-64 rounded-2xl bg-white lg:h-[400px] lg:w-[390px]"></div>
-                  <div className="h-64 w-64 rounded-2xl bg-white lg:h-[400px] lg:w-[390px]"></div>
+                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                    <Image
+                      className="h-full w-full"
+                      alt=""
+                      width={400}
+                      height={400}
+                      src={"/newImg/Vacine.png"}
+                    />
+                  </div>
+                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                    <Image
+                      className="h-full w-full"
+                      alt=""
+                      width={400}
+                      height={400}
+                      src={"/newImg/Boi.png"}
+                    />
+                  </div>
                 </motion.div>
               </div>
             </section>
