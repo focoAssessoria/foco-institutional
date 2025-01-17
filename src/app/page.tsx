@@ -9,8 +9,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/navigation";
 import { Header } from "./components/Header";
 import { MedicationCalculator } from "./components/MedicationCalculator";
+import Lenis from "lenis";
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
   const router = useRouter();
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);

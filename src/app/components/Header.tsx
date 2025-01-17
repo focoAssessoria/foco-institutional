@@ -111,16 +111,45 @@ export function Header({ mobile }: HeaderProps) {
             className="h-max w-80 object-contain"
           />
           <div className="flex w-full flex-col items-start gap-2 text-start">
-            <button className="text-sm">Calculadora de Lucro</button>
-            <button className="text-sm">Serviços</button>
-            <button className="text-sm">Inteligência Artificial</button>
-            <button className="text-sm">História</button>
+            <button
+              onClick={() => scrollToBottom("calculator")}
+              className="text-sm"
+            >
+              Calculadora de Lucro
+            </button>
+            <button
+              onClick={() => scrollToSection("service")}
+              className="text-sm"
+            >
+              Serviços
+            </button>
+            <button
+              onClick={() => scrollToSection("history")}
+              className="text-sm"
+            >
+              História
+            </button>
+            <button onClick={() => scrollToSection("ai")} className="text-sm">
+              Inteligência Artificial
+            </button>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-4">
-            <button className="rounded-md border border-white p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]">
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d389nhgdmdu5e2.amplifyapp.com")
+              }
+              className="rounded-md border border-white p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
+            >
               ESPAÇO ADM
             </button>
-            <button className="rounded-md border border-[#DC2626] bg-white p-2 text-[12px] text-[#DC2626] transition-all duration-200 hover:scale-[1.02]">
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d2eq0bpdou5t22.amplifyapp.com")
+              }
+              className="rounded-md border border-[#DC2626] bg-white p-2 text-[12px] text-[#DC2626] transition-all duration-200 hover:scale-[1.02]"
+            >
               ESPAÇO DO CLIENTE
             </button>
           </div>
