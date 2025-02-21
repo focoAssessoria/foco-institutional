@@ -1,8 +1,6 @@
 "use client";
 
-import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 interface MedicationCalculatorProps {
   openMedicationCalculator: boolean;
@@ -12,76 +10,6 @@ export function MedicationCalculator({
   openMedicationCalculator,
   setOpenMedicationCalculator,
 }: MedicationCalculatorProps) {
-  const [initialCount, setInitialCount] = useState(10000);
-  const [reasons, setReasons] = useState([
-    {
-      id: 1,
-      reason: "Pneumonia < 60 dias",
-      avg: 2,
-      amount: 0,
-    },
-    {
-      id: 2,
-      reason: "Pneumonia > 60 dias",
-      avg: 1,
-      amount: 0,
-    },
-    {
-      id: 3,
-      reason: "Refugo Cocho Grave",
-      avg: 1,
-      amount: 0,
-    },
-    {
-      id: 4,
-      reason: "Refugo Cocho Leve",
-      avg: 0.5,
-      amount: 0,
-    },
-    {
-      id: 5,
-      reason: "Casco < 60 dias",
-      avg: 0.5,
-      amount: 0,
-    },
-    {
-      id: 6,
-      reason: "Casco > 60 dias",
-      avg: 0.5,
-      amount: 0,
-    },
-    {
-      id: 7,
-      reason: "Tristeza",
-      avg: 0.7,
-      amount: 0,
-    },
-    {
-      id: 8,
-      reason: "Diarreia",
-      avg: 0.3,
-      amount: 0,
-    },
-    {
-      id: 9,
-      reason: "Polio",
-      avg: 0.2,
-      amount: 0,
-    },
-    {
-      id: 10,
-      reason: "Intoxicação",
-      avg: 0.1,
-      amount: 0,
-    },
-    {
-      id: 11,
-      reason: "Lesão",
-      avg: 0.1,
-      amount: 0,
-    },
-  ]);
-
   return (
     <>
       {openMedicationCalculator && (
