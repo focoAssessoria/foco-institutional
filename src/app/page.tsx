@@ -469,138 +469,167 @@ export default function Home() {
               <div className="absolute right-0 z-30 h-full w-[100px] bg-gradient-to-r from-[#0A0A0A] to-[#8F1220]/80"></div>
               <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:px-24 lg:py-16">
                 <Marquee gradient={false} pauseOnHover speed={100}>
-                  <div className="flex space-x-24 px-24 text-xl font-bold text-[#585858]">
+                  <div className="flex space-x-24 px-24 py-8 text-xl font-bold text-[#585858]">
                     <button
                       onClick={() =>
-                        (window.location.href =
-                          "https://www.fazendasreunidas.agr.br/")
+                        window.open(
+                          "https://agropecuariagrandelago.com.br/",
+                          "_blank",
+                        )
                       }
-                      className="group relative"
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
                         alt=""
                         width={1000}
                         height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
                         src={"/logos/1.png"}
                       />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open(
+                          "https://www.instagram.com/campanellioficial/",
+                          "_blank",
+                        )
+                      }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
                       <Image
                         alt=""
                         width={1000}
                         height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
+                        src={"/logos/2.png"}
+                      />
+                    </button>
+                    <button
+                      // onClick={() =>
+                      //   (window.open("https://www.instagram.com/campanellioficial/", "_blank"))
+                      // }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
+                        src={"/logos/3.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open(
+                          "https://frisa.com.br/exportacao/",
+                          "_blank",
+                        )
+                      }
+                      disabled
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
+                        src={"/logos/4.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open("https://jbjagropecuaria.com.br/", "_blank")
+                      }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
+                        src={"/logos/5.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open(
+                          "https://www.friboi.com.br/comercializacao/boitel-jbs/",
+                          "_blank",
+                        )
+                      }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
+                        src={"/logos/6.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open("https://mfgagropecuaria.com.br/", "_blank")
+                      }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
                         src={"/logos/7.png"}
                       />
                     </button>
                     <button
                       onClick={() =>
-                        (window.location.href =
-                          "https://www.instagram.com/confinamentomp/")
+                        window.open(
+                          "https://www.queirozdequeiroz.com.br/pecuaria/",
+                          "_blank",
+                        )
                       }
-                      className="group relative"
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
                         alt=""
                         width={1000}
                         height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
-                        src={"/logos/2.png"}
-                      />
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
                         src={"/logos/8.png"}
                       />
                     </button>
                     <button
                       onClick={() =>
-                        (window.location.href =
-                          "https://www.instagram.com/campanellioficial/")
+                        window.open(
+                          "https://www.instagram.com/realbeef.confinamento/",
+                          "_blank",
+                        )
                       }
-                      className="group relative"
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
                         alt=""
                         width={1000}
                         height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
-                        src={"/logos/3.png"}
-                      />
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
                         src={"/logos/9.png"}
                       />
                     </button>
                     <button
-                      // onClick={() =>
-                      //   (window.location.href =
-                      //     "https://admin.focosaudeanimal.com.br")
-                      // }
-                      disabled
-                      className="group relative"
+                      onClick={() =>
+                        window.open(
+                          "https://sites.google.com/ypoti.com/ypoti/bienvenidos/",
+                          "_blank",
+                        )
+                      }
+                      className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
                         alt=""
                         width={1000}
                         height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
-                        src={"/logos/4.png"}
-                      />
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        className="h-[50px] w-max object-contain group-hover:opacity-100"
                         src={"/logos/10.png"}
-                      />
-                    </button>
-                    <button
-                      onClick={() =>
-                        (window.location.href =
-                          "https://www.instagram.com/realbeef.confinamento/")
-                      }
-                      className="group relative"
-                    >
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
-                        src={"/logos/5.png"}
-                      />
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
-                        src={"/logos/11.png"}
-                      />
-                    </button>
-                    <button
-                      onClick={() =>
-                        (window.location.href =
-                          "https://mfgagropecuaria.com.br/")
-                      }
-                      className="group relative"
-                    >
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
-                        src={"/logos/6.png"}
-                      />
-                      <Image
-                        alt=""
-                        width={1000}
-                        height={500}
-                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
-                        src={"/logos/12.png"}
                       />
                     </button>
                   </div>
@@ -816,7 +845,7 @@ export default function Home() {
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
                           viewport={{ once: true }}
-                          className="group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl bg-black/20 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
+                          className="group relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl rounded-md bg-black/20 bg-white p-2 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
                         >
                           <Image
                             alt=""
