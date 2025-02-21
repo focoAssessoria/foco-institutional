@@ -505,9 +505,9 @@ export default function Home() {
                       />
                     </button>
                     <button
-                      // onClick={() =>
-                      //   (window.open("https://www.instagram.com/campanellioficial/", "_blank"))
-                      // }
+                      onClick={() =>
+                        window.open("http://csapecuaria.com.br/", "_blank")
+                      }
                       className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
@@ -525,7 +525,6 @@ export default function Home() {
                           "_blank",
                         )
                       }
-                      disabled
                       className="group relative flex items-center justify-center rounded-md bg-white p-2"
                     >
                       <Image
