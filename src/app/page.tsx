@@ -539,7 +539,7 @@ export default function Home() {
                     <button
                       // onClick={() =>
                       //   (window.location.href =
-                      //     "https://main.d389nhgdmdu5e2.amplifyapp.com")
+                      //     "https://admin.focosaudeanimal.com.br")
                       // }
                       disabled
                       className="group relative"
@@ -934,8 +934,7 @@ export default function Home() {
           <div className="flex h-full flex-col justify-center gap-1">
             <button
               onClick={() =>
-                (window.location.href =
-                  "https://main.d389nhgdmdu5e2.amplifyapp.com")
+                (window.location.href = "https://admin.focosaudeanimal.com.br")
               }
               className="rounded-md border border-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
             >
@@ -943,8 +942,7 @@ export default function Home() {
             </button>
             <button
               onClick={() =>
-                (window.location.href =
-                  "https://main.d2eq0bpdou5t22.amplifyapp.com")
+                (window.location.href = "https://client.focosaudeanimal.com.br")
               }
               className="rounded-md border border-[#8F1220] bg-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
             >
