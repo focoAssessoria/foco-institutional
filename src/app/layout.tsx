@@ -3,10 +3,10 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import { CookiesProvider } from "next-client-cookies/server";
 import "swiper/css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-
 export const metadata: Metadata = {
-  title: "Foco Assessoria",
+  title: "Foco Consultoria",
   icons: {
     icon: "/icon.png",
   },
@@ -29,6 +29,7 @@ export default function RootLayout({
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "qdcx4ukh2o");`}
       </Script>
+      <GoogleAnalytics gaId={"G-WTC5FXCT9Y"} />
       <CookiesProvider>
         <body className={`${poppins.className} `}>{children}</body>
       </CookiesProvider>

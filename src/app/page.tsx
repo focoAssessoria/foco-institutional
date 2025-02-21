@@ -9,13 +9,43 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/navigation";
 import { Header } from "./components/Header";
 import { MedicationCalculator } from "./components/MedicationCalculator";
+import Lenis from "lenis";
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
   const router = useRouter();
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [openMedicationCalculator, setOpenMedicationCalculator] =
     useState(false);
-  const services: string[] = ["Serviço 1", "Serviço 2", "Serviço 3"];
+  const services = [
+    {
+      image: "/newImg/s1.jpg",
+      title: "Gestão Sanitária Avançada",
+      description:
+        "Monitoramento e controle de doenças para promover a saúde do rebanho, com foco na prevenção e redução de custos operacionais.",
+    },
+    {
+      image: "/newImg/nutrição.jpg",
+      title: "Otimização Nutricional Personalizada",
+      description:
+        "Elaboração de planos nutricionais estratégicos para aumentar a eficiência alimentar, melhorar o desempenho e fortalecer a produtividade.",
+    },
+    {
+      image: "/newImg/treinamento.jpeg",
+      title: "Capacitação em Manejo e Sanidade",
+      description:
+        "Treinamento especializado para equipes, abordando boas práticas de manejo, prevenção de doenças e técnicas modernas de cuidado animal.",
+    },
+    ,
+  ];
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleAccordion = (index: number): void => {
@@ -84,19 +114,148 @@ export default function Home() {
     },
   };
 
-  const slides = [0, 1, 2];
+  const slides = [
+    {
+      id: 1,
+      image: "/newImg/h1.png",
+      title:
+        "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
+    },
+    {
+      id: 2,
+      image: "/newImg/h2.png",
+      title:
+        "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
+    },
+    {
+      id: 3,
+      image: "/newImg/h3.png",
+      title:
+        "Seguimos inovando e contribuindo para o futuro da pecuária , sempre ao lado de quem confia na nossa expertise.",
+    },
+  ];
 
   return (
     <>
       <div className="flex h-full w-full flex-col items-center bg-[#0A0A0A]">
-        <main className="rel flex w-full flex-col">
-          <Header />
+        <main className="relative flex w-full flex-col">
+          <Header mobile />
+          {/* HERO MOBILE */}
+          <section
+            ref={sectionRef}
+            className="absolute top-0 z-40 flex h-[70vh] w-full flex-col rounded-b-[40px] bg-[#0A0A0A] sm:h-[85vh] md:h-[90vh] lg:hidden"
+          >
+            <div className="absolute top-0 z-50 h-full w-full rounded-b-[40px] bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30"></div>
+            <div className="absolute top-0 z-40 h-full w-full rounded-b-[40px] bg-white/70"></div>
+
+            <Image
+              className="absolute bottom-20 left-0 z-50 h-[50vh] w-auto"
+              alt=""
+              width={500}
+              height={500}
+              src="/2.png"
+            />
+            <div className="sticky top-0 z-[80] flex h-screen w-full justify-center">
+              <div className="relative mt-12 flex w-full flex-col items-center gap-2 rounded-lg p-2">
+                <div>
+                  <Image
+                    className="h-20 w-max object-contain"
+                    alt=""
+                    width={500}
+                    height={500}
+                    src="/fullLogo.png"
+                  />
+                </div>
+                <div className="flex flex-col self-center">
+                  <h1 className="text-center text-2xl font-bold uppercase text-black">
+                    MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
+                  </h1>
+                  <h2 className="text-center text-sm text-black">
+                    Especialistas em saúde e sanidade de bovinos, oferecemos
+                    soluções personalizadas para aumentar a produtividade,
+                    reduzir perdas e garantir o bem-estar animal.
+                  </h2>
+                </div>
+                <div className="z-[60] flex w-full items-center justify-center gap-4">
+                  <button
+                    onClick={() => router.push("/mortality-calculator")}
+                    className="font-regular flex h-max w-full items-center justify-center rounded-md border-[#8F1220] bg-white text-xs transition-all duration-300 hover:scale-[1.05]"
+                  >
+                    <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-[#8F1220]">
+                      Calculadora de Mortalidade
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => setOpenMedicationCalculator(true)}
+                    className="font-regular flex h-max w-full items-center justify-center rounded-md border-[#8F1220] bg-white text-xs transition-all duration-300 hover:scale-[1.05]"
+                  >
+                    <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-[#8F1220]">
+                      Calculadora de Medicamentos
+                    </span>
+                  </button>
+                </div>
+
+                <div className="absolute -bottom-28 z-[80] flex w-11/12 flex-col overflow-hidden rounded-3xl">
+                  <div className="z-[90] flex flex-col items-center justify-center">
+                    <Image
+                      className="h-max w-1/2 object-contain"
+                      alt=""
+                      width={500}
+                      height={500}
+                      src="/fullLogoWhite.png"
+                    />
+                    <h1 className="text-center font-bold uppercase text-white">
+                      Maximize a Saúde do Seu Rebanho e Seus Resultados
+                    </h1>
+                    <div className="mx-auto flex w-2/3 items-center justify-center gap-4">
+                      <button
+                        onClick={() => scrollToSessao2()}
+                        className="mt-8 rounded-md transition-all duration-300"
+                      >
+                        <Image
+                          alt=""
+                          width={500}
+                          height={500}
+                          src={"/appleP.png"}
+                          className="h-10 w-auto object-contain"
+                        />
+                      </button>
+                      <button
+                        onClick={() => scrollToSessao2()}
+                        className="mt-8 rounded-md transition-all duration-300"
+                      >
+                        <Image
+                          alt=""
+                          width={500}
+                          height={500}
+                          src={"/googleP.png"}
+                          className="h-10 w-auto rounded-md object-contain"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <video
+                    className="absolute left-0 top-0 z-[50] h-full w-full object-cover"
+                    src={"/video2.mp4"}
+                    autoPlay
+                    playsInline
+                    preload="auto"
+                    muted
+                    loop
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* HERO DESKTOP */}
           <motion.section
             ref={sectionRef}
-            className="relative z-40 flex min-h-[180vh] w-full flex-col rounded-b-[40px] bg-[#0A0A0A] lg:rounded-b-[80px]"
+            className="relative z-40 hidden w-full flex-col rounded-b-[40px] bg-[#0A0A0A] lg:flex lg:min-h-[180vh] lg:rounded-b-[80px]"
           >
-            <div className="absolute z-50 h-full w-full rounded-b-[40px] bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30 lg:rounded-b-[80px]"></div>
-            <div className="absolute z-40 h-full w-full rounded-b-[40px] bg-white/70 lg:rounded-b-[80px]"></div>
+            <Header />
+            <div className="absolute top-0 z-50 h-full w-full rounded-b-[40px] bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30 lg:rounded-b-[80px]"></div>
+            <div className="absolute top-0 z-40 h-full w-full rounded-b-[40px] bg-white/70 lg:rounded-b-[80px]"></div>
 
             <Image
               className="absolute bottom-20 left-0 z-50 h-[50vh] w-auto"
@@ -108,8 +267,6 @@ export default function Home() {
             <div className="sticky top-0 z-[80] flex h-screen w-full justify-center">
               <motion.div
                 className="relative flex w-full flex-col items-center rounded-lg px-4 py-16 lg:px-0"
-                animate={{ y: 0, scale: 1, opacity: 1 }}
-                initial={{ y: -100, scale: 0.8, opacity: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
@@ -138,23 +295,25 @@ export default function Home() {
                   initial={{ opacity: 0, y: -50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                  className="text-3xl font-bold text-black lg:text-4xl"
+                  className="text-3xl font-bold uppercase text-black lg:text-4xl"
                 >
-                  CONSULTORIA EM SAÚDE ANIMAL
+                  MAXIMIZE a Saúde do Seu Rebanho e Seus Resultados
                 </motion.h1>
                 <motion.h2
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-                  className="mb-4 mt-4 text-black lg:text-center lg:text-lg"
+                  className="mb-4 mt-4 text-black lg:text-center lg:text-2xl"
                 >
-                  CONSULTORIA EM SAÚDE ANIMAL, CONSULTORIA EM SAÚDE ANIMAL
-                  CONSULTORIA EM <br /> SAÚDE ANIMAL CONSULTORIA EM SAÚDE ANIMAL
+                  Especialistas em saúde e sanidade de bovinos, oferecemos
+                  soluções personalizadas para
+                  <br /> aumentar a produtividade, reduzir perdas e garantir o
+                  bem-estar animal.
                 </motion.h2>
 
                 <motion.div
                   style={{ scale, y: yPosition }}
-                  className="absolute -bottom-20 z-[80] flex h-[440px] w-[80%] flex-col overflow-hidden rounded-3xl lg:flex-row"
+                  className="-bottom-20 z-[80] hidden h-[440px] w-[80%] flex-col overflow-hidden rounded-3xl lg:absolute lg:flex lg:flex-row"
                 >
                   <motion.div
                     style={{ opacity }}
@@ -167,8 +326,8 @@ export default function Home() {
                       height={500}
                       src="/fullLogoWhite.png"
                     />
-                    <h1 className="w-40 font-bold text-white lg:w-auto lg:text-2xl">
-                      CONSULTORIA EM SAÚDE ANIMAL
+                    <h1 className="w-40 font-bold uppercase text-white lg:w-auto lg:text-2xl">
+                      Excelência em Saúde e Sanidade Bovina
                     </h1>
                     <div className="flex w-2/3 flex-row gap-4 lg:w-auto">
                       <button
@@ -207,6 +366,7 @@ export default function Home() {
                     loop
                   />
                   <motion.div
+                    id="calculator"
                     style={{ opacity: reverseOpacity }}
                     className="z-[60] flex h-full w-full flex-col justify-evenly p-4 text-right lg:flex-row lg:items-end lg:justify-between"
                   >
@@ -249,30 +409,168 @@ export default function Home() {
             </div>
           </motion.section>
 
-          <div ref={scrollToRef} className="relative -mt-20 flex flex-col">
-            <div className="absolute right-0 z-30 h-full w-[100px] bg-gradient-to-r from-[#0A0A0A] to-[#8F1220]/80"></div>
-            <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:px-24 lg:py-16">
-              <Marquee gradient={false} pauseOnHover speed={100}>
-                <div className="flex space-x-24 px-24 text-xl font-bold text-[#585858]">
-                  <span>LOGO NAME</span>
-                  <span>LOGO NAME</span>
-                  <span>LOGO NAME</span>
-                  <span>LOGO NAME</span>
-                  <span>LOGO NAME</span>
-                  <span>LOGO NAME</span>
-                </div>
-              </Marquee>
-            </section>
+          <div className="mt-[72vh] flex flex-col lg:mt-0">
+            <div ref={scrollToRef} className="relative -mt-20 flex flex-col">
+              <div className="absolute right-0 z-30 h-full w-[100px] bg-gradient-to-r from-[#0A0A0A] to-[#8F1220]/80"></div>
+              <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:px-24 lg:py-16">
+                <Marquee gradient={false} pauseOnHover speed={100}>
+                  <div className="flex space-x-24 px-24 text-xl font-bold text-[#585858]">
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                    <span>FOCO CONSULTORIA</span>
+                  </div>
+                </Marquee>
+              </section>
 
-            <section className="relative flex h-screen w-full flex-col items-center justify-center bg-[#0A0A0A] text-white">
-              <Image
-                className="absolute right-0 z-50 h-[50vh] w-auto"
-                alt=""
-                width={500}
-                height={500}
-                src="/logoCortadaCinza.png"
-              />
-              <div className="z-[60] flex h-full w-full flex-col px-4 py-8 text-white lg:px-24 lg:py-16">
+              <section
+                id="service"
+                className="relative flex w-full flex-col items-center justify-center bg-[#0A0A0A] text-white lg:h-screen"
+              >
+                <Image
+                  className="absolute right-0 z-50 h-[50vh] w-auto"
+                  alt=""
+                  width={500}
+                  height={500}
+                  src="/logoCortadaCinza.png"
+                />
+                <div className="z-[60] flex h-full w-full flex-col px-4 py-8 text-white lg:px-24 lg:py-16">
+                  <div className="flex flex-row gap-2">
+                    <motion.div
+                      className="flex flex-row items-center gap-2 font-bold"
+                      initial={{ opacity: 0, x: -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <Image
+                        className="h-14 w-auto"
+                        alt=""
+                        width={500}
+                        height={500}
+                        src="/4.png"
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="flex flex-row items-center gap-2 font-bold"
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <h2 className="text-2xl font-bold">SERVIÇOS</h2>
+                    </motion.div>
+                  </div>
+                  <motion.h3
+                    className="mb-4 text-start text-xl font-semibold"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    Soluções Sob Medida para a Gestão do Seu Rebanho
+                  </motion.h3>
+
+                  <motion.div
+                    className="mt-10 flex flex-col justify-between gap-8"
+                    variants={parentVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    {services.map((service, index) => (
+                      <motion.div
+                        key={index}
+                        className={`mb-2 mt-4 w-full transition-all duration-300 lg:w-[80%] ${
+                          openIndex !== index ? "border-b border-b-white" : ""
+                        }`}
+                        variants={childVariants}
+                      >
+                        <button
+                          onClick={() => toggleAccordion(index)}
+                          className="flex w-full justify-between px-4 py-2 text-left text-sm font-medium text-white"
+                        >
+                          <div
+                            className={`flex flex-row gap-8 transition-all duration-300 ${
+                              openIndex === index
+                                ? "text-[#DC2626]"
+                                : "text-white"
+                            }`}
+                          >
+                            <span>0{index + 1}</span>
+                            <span className="text-xl font-bold">
+                              {service?.title}
+                            </span>
+                          </div>
+                          <div
+                            className={`border ${
+                              openIndex === index
+                                ? "border-white"
+                                : "border-zinc-600"
+                            } flex h-8 w-8 items-center justify-center rounded-full p-2 transition-all duration-300`}
+                          >
+                            <span
+                              className={`${
+                                openIndex === index ? "-rotate-45" : ""
+                              } transform transition-transform duration-300`}
+                            >
+                              <ArrowRight
+                                className={`transition-all duration-300 ${
+                                  openIndex === index
+                                    ? "text-[#DC2626]"
+                                    : "text-white"
+                                }`}
+                              />
+                            </span>
+                          </div>
+                        </button>
+                        <div
+                          ref={(el) => {
+                            contentRefs.current[index] = el;
+                          }}
+                          className="flex max-h-0 flex-row items-center gap-8 overflow-hidden px-4 text-sm text-gray-200 transition-all duration-500 ease-in-out"
+                        >
+                          <a
+                            href="https://api.whatsapp.com/send?phone=5534999050904&text=Ol%C3%A1,%20estou%20no%20site%20do%20FOCO%20e%20quero%20falar%20com%20algu%C3%A9m.%20%F0%9F%A4%A0"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300"
+                          >
+                            <div
+                              className={`flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300 ${
+                                openIndex === index
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              }`}
+                            >
+                              <div className="hidden h-20 w-20 min-w-20 overflow-hidden rounded-lg md:h-32 md:w-40 lg:block">
+                                <Image
+                                  className="h-20 w-20 rounded-lg object-cover md:h-32 md:w-40"
+                                  width={400}
+                                  height={400}
+                                  alt=""
+                                  src={service?.image || "/newImg/boi.png"}
+                                />
+                              </div>
+                              <span>{service?.description}</span>
+                            </div>
+                          </a>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
+              </section>
+            </div>
+            <section
+              id="history"
+              className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-b-3xl"
+            >
+              <div className="absolute z-20 h-full w-full bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30"></div>
+              <div className="absolute z-10 h-full w-full bg-white/70"></div>
+              <div className="z-[60] flex h-full w-full flex-col px-4 py-8 text-[#DC2626] lg:px-24 lg:py-16">
                 <div className="flex flex-row gap-2">
                   <motion.div
                     className="flex flex-row items-center gap-2 font-bold"
@@ -296,7 +594,7 @@ export default function Home() {
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-2xl font-bold">SERVIÇOS</h2>
+                    <h2 className="text-2xl font-bold">NOSSA HISTÓRIA</h2>
                   </motion.div>
                 </div>
                 <motion.h3
@@ -306,187 +604,83 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  Explore the world through our portfolio of works and find what
-                  you love here.
+                  Uma história guiada por compromisso e crescimento.
                 </motion.h3>
 
-                <motion.div
-                  className="mt-10 flex flex-col justify-between gap-8"
-                  variants={parentVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  {services.map((service, index) => (
-                    <motion.div
-                      key={index}
-                      className={`mb-2 mt-4 w-full transition-all duration-300 lg:w-[80%] ${
-                        openIndex !== index ? "border-b border-b-white" : ""
-                      }`}
-                      variants={childVariants}
-                    >
-                      <button
-                        onClick={() => toggleAccordion(index)}
-                        className="flex w-full justify-between px-4 py-2 text-left text-sm font-medium text-white"
-                      >
-                        <div
-                          className={`flex flex-row gap-8 transition-all duration-300 ${
-                            openIndex === index
-                              ? "text-[#DC2626]"
-                              : "text-white"
-                          }`}
+                <h3 className="text-md text-start font-semibold"></h3>
+                <div className="z-[60] mb-20 mt-10 flex w-full flex-row justify-between gap-8">
+                  <Swiper
+                    slidesPerView={1.2}
+                    spaceBetween={20}
+                    breakpoints={{
+                      768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                      },
+                    }}
+                  >
+                    {slides.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <motion.button
+                          onClick={() =>
+                            (window.location.href =
+                              "https://www.instagram.com/foco.saudeanimal/")
+                          }
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.8, delay: 0.3 }}
+                          viewport={{ once: true }}
+                          className="group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl bg-black/20 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
                         >
-                          <span>0{index + 1}</span>
-                          <span className="text-xl font-bold">{service}</span>
-                        </div>
-                        <div
-                          className={`border ${
-                            openIndex === index
-                              ? "border-white"
-                              : "border-zinc-600"
-                          } flex h-8 w-8 items-center justify-center rounded-full p-2 transition-all duration-300`}
-                        >
-                          <span
-                            className={`${
-                              openIndex === index ? "-rotate-45" : ""
-                            } transform transition-transform duration-300`}
-                          >
-                            <ArrowRight
-                              className={`transition-all duration-300 ${
-                                openIndex === index
-                                  ? "text-[#DC2626]"
-                                  : "text-white"
-                              }`}
-                            />
-                          </span>
-                        </div>
-                      </button>
-                      <div
-                        ref={(el) => {
-                          contentRefs.current[index] = el;
-                        }}
-                        className="flex max-h-0 flex-row items-center gap-8 overflow-hidden px-4 text-sm text-gray-200 transition-all duration-500 ease-in-out"
-                      >
-                        <div
-                          className={`flex h-48 w-[80%] flex-row items-center gap-8 transition-all duration-300 ${
-                            openIndex === index ? "opacity-100" : "opacity-0"
-                          }`}
-                        >
-                          <div className="h-32 w-40 p-1">
-                            <div className="h-full w-full rounded-lg bg-white"></div>
+                          <Image
+                            alt=""
+                            width={400}
+                            height={400}
+                            src={item.image}
+                            className="absolute top-0 z-10 h-full w-full object-cover"
+                          />
+                          <div className="z-20 flex h-full w-full flex-col gap-4 bg-black/40 p-4 pb-8 pt-12 transition-all duration-300 hover:bg-black/0 md:pt-16 lg:pt-4">
+                            <div className="h-1/3 w-full md:h-1/2"></div>
+                            <div className="flex h-2/3 w-full items-center md:h-1/2">
+                              <span className="text-start font-semibold text-white transition-all duration-300 group-hover:text-white">
+                                {item.title}
+                              </span>
+                            </div>
+
+                            <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
+                              <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
+                                <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
+                              </span>
+                            </div>
                           </div>
-                          <span>
-                            Explore the world through our portfolio of works and
-                            find what you love here. This is a detailed
-                            description of {service}.
-                          </span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                        </motion.button>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
               </div>
             </section>
-          </div>
-          <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-b-3xl">
-            <div className="absolute z-20 h-full w-full bg-[url(/1.png)] bg-cover bg-no-repeat opacity-30"></div>
-            <div className="absolute z-10 h-full w-full bg-white/70"></div>
-            <div className="z-[60] flex h-full w-full flex-col px-4 py-8 text-[#DC2626] lg:px-24 lg:py-16">
-              <div className="flex flex-row gap-2">
-                <motion.div
-                  className="flex flex-row items-center gap-2 font-bold"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <Image
-                    className="h-14 w-auto"
-                    alt=""
-                    width={500}
-                    height={500}
-                    src="/4.png"
-                  />
-                </motion.div>
-                <motion.div
-                  className="flex flex-row items-center gap-2 font-bold"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <h2 className="text-2xl font-bold">NOSSA HISTÓRIA</h2>
-                </motion.div>
-              </div>
-              <motion.h3
-                className="text-md mb-4 text-start font-semibold"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                (TEXTO GENÉRICO SOBRE HISTÓRIA DE ATÉ 2 LINHAS)
-              </motion.h3>
 
-              <h3 className="text-md text-start font-semibold"></h3>
-              <div className="z-[60] mb-20 mt-10 flex w-full flex-row justify-between gap-8">
-                <Swiper
-                  slidesPerView={1.2}
-                  spaceBetween={20}
-                  breakpoints={{
-                    768: {
-                      slidesPerView: 3,
-                      spaceBetween: 20,
-                    },
-                  }}
-                >
-                  {slides.map((index) => (
-                    <SwiperSlide key={index}>
-                      <motion.button
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        viewport={{ once: true }}
-                        className="group relative flex flex-col gap-4 rounded-2xl bg-black/20 p-4 pt-16 transition-all duration-300 hover:scale-[1.05] hover:bg-black/40 lg:h-64 lg:w-64 lg:pt-4 xl:h-[350px] xl:w-[350px]"
-                      >
-                        <div className="h-1/2 w-full"></div>
-                        <div className="flex h-1/2 w-full items-center">
-                          <span className="text-start font-semibold text-zinc-800 transition-all duration-300 group-hover:text-white">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                          </span>
-                        </div>
-                        <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
-                          <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
-                            <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
-                          </span>
-                        </div>
-                      </motion.button>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-            </div>
-          </section>
-
-          <section className="relative z-40 -mt-20 flex h-screen w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:px-24 lg:py-16 lg:pb-20">
-            <Image
-              className="absolute right-0 top-20 z-50 h-[50vh] w-auto"
-              alt=""
-              width={500}
-              height={500}
-              src="/3.png"
-            />
-            <div className="z-[60] flex w-full flex-col">
-              <div className="text-bold flex flex-row items-center justify-center gap-2">
+            <section
+              id="ai"
+              className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20"
+            >
+              <Image
+                className="absolute right-0 top-20 z-50 h-[50vh] w-auto"
+                alt=""
+                width={500}
+                height={500}
+                src="/3.png"
+              />
+              <div className="z-[60] flex w-full flex-col">
                 <motion.div
-                  className="flex flex-col items-center justify-center gap-2 font-bold"
+                  className="flex flex-col gap-2 font-bold"
                   variants={textVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <div className="flex-row-gap-2 flex">
+                  <div className="flex flex-row gap-2">
                     <motion.div
                       variants={imageVariants}
                       initial="hidden"
@@ -502,60 +696,89 @@ export default function Home() {
                       />
                     </motion.div>
                     <h2 className="text-2xl font-bold">
-                      TECNOLOGIAS INOVADORAS NO SETOR
+                      Tecnologia que Revoluciona a Pecuária
                     </h2>
                   </div>
-                  <h3 className="text-md text-center font-semibold">
-                    (TEXTO SOBRE TECNOLOGIAS INOVADORAS NO SETOR DE PECUÁRIA, DE
-                    ATÉ 3 LINHAS)
+                  <h3 className="font-semibold">
+                    Inovação em saúde e sanidade bovina para uma gestão mais
+                    eficiente e produtiva.
                   </h3>
                 </motion.div>
-              </div>
 
-              <motion.div
-                className="mb-10 mt-10 flex w-full flex-col items-center justify-evenly gap-8 lg:flex-row"
-                variants={textVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <div className="h-64 w-64 rounded-2xl bg-white lg:h-[400px] lg:w-[390px]"></div>
-                <div className="h-64 w-64 rounded-2xl bg-white lg:h-[400px] lg:w-[390px]"></div>
-              </motion.div>
-            </div>
-          </section>
+                <motion.div
+                  className="mb-10 mt-10 flex w-full flex-col items-center justify-evenly gap-8 md:flex-row"
+                  variants={textVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                    <Image
+                      className="h-full w-full"
+                      alt=""
+                      width={400}
+                      height={400}
+                      src={"/newImg/Vacine.png"}
+                    />
+                  </div>
+                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                    <Image
+                      className="h-full w-full"
+                      alt=""
+                      width={400}
+                      height={400}
+                      src={"/newImg/boi.png"}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+          </div>
         </main>
-        <footer className="mb-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg bg-black px-4 py-2 shadow shadow-[#8F1220] lg:flex-row">
+        <footer className="my-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg border border-[#8F1220] bg-black px-4 py-2 shadow shadow-[#8F1220] md:flex-row">
           <button>
             <Image
-              className="h-16 w-auto transition-all duration-300 hover:scale-[1.05]"
+              className="h-16 w-max object-contain transition-all duration-300 hover:scale-[1.05]"
               alt=""
               width={500}
               height={500}
               src="/12.png"
             />
           </button>
+          <div className="flex h-full flex-col justify-center gap-1">
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d389nhgdmdu5e2.amplifyapp.com")
+              }
+              className="rounded-md border border-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
+            >
+              ESPAÇO ADM
+            </button>
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://main.d2eq0bpdou5t22.amplifyapp.com")
+              }
+              className="rounded-md border border-[#8F1220] bg-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
+            >
+              ESPAÇO DO CLIENTE
+            </button>
+          </div>
           <button>
             <Image
-              className="h-16 w-auto transition-all duration-300 hover:scale-[1.05]"
-              alt=""
-              width={500}
-              height={500}
-              src="/13.png"
-            />
-          </button>
-          <button>
-            <Image
-              className="h-16 w-auto transition-all duration-300 hover:scale-[1.05]"
+              className="h-16 w-max object-contain transition-all duration-300 hover:scale-[1.05]"
               alt=""
               width={500}
               height={500}
               src="/14.png"
             />
           </button>
-          <div className="flex flex-col lg:items-end">
-            <span className="text-lg">Tecnologia Desenvolvida por</span>
-            <span className="text-lg font-semibold">
+          <div className="flex flex-col md:items-end">
+            <span className="text-xs lg:text-lg">
+              Tecnologia Desenvolvida por
+            </span>
+            <span className="text-xs font-semibold">
               Executivo&apos;s Negócios Digitais LTDA
             </span>
           </div>
