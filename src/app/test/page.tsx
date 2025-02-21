@@ -86,7 +86,7 @@ export default function Home() {
 //               <div className="absolute -bottom-20 z-[80] flex h-[440px] w-[80%] flex-row overflow-hidden rounded-3xl">
 //                 <video
 //                   className="absolute left-0 top-0 z-[50] h-full w-full object-cover"
-//                   src={"/video.mp4"}
+//
 //                   autoPlay
 //                   playsInline
 //                   preload="auto"

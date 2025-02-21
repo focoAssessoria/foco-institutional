@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 interface MedicationCalculatorProps {
@@ -92,8 +93,18 @@ export function MedicationCalculator({
             onClick={() => setOpenMedicationCalculator(false)}
             className="absolute z-[100] h-full w-full bg-black/20 backdrop-blur"
           />
-          <div className="relative z-[100] flex flex-col items-center justify-center">
-            <div className="relative z-[100] flex max-h-[80vh] w-[95%] flex-col overflow-y-scroll rounded-md border border-gray-200 bg-white p-2 text-black shadow-md xs:max-w-[370px] sm:max-w-[500px] md:overflow-y-auto lg:w-[800px] lg:max-w-none">
+          <div className="relative z-[100] flex flex-col items-center justify-center gap-4 rounded-lg bg-black px-8 py-4">
+            <h3 className="text-3xl font-bold text-[#DC2626]">
+              Calculadora de Medicamentos
+            </h3>
+            <Image
+              alt=""
+              width={1000}
+              height={1000}
+              src={"/shortly.png"}
+              className="h-[60vh] w-auto rounded-lg"
+            />
+            {/* <div className="relative z-[100] flex max-h-[80vh] w-[95%] flex-col overflow-y-scroll rounded-md border border-gray-200 bg-white p-2 text-black shadow-md xs:max-w-[370px] sm:max-w-[500px] md:overflow-y-auto lg:w-[800px] lg:max-w-none">
               <ChevronLeft
                 className="absolute left-2 top-2 z-[100] cursor-pointer"
                 onClick={() => setOpenMedicationCalculator(false)}
@@ -153,7 +164,7 @@ export function MedicationCalculator({
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

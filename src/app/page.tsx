@@ -10,7 +10,12 @@ import { useRouter } from "next/navigation";
 import { Header } from "./components/Header";
 import { MedicationCalculator } from "./components/MedicationCalculator";
 import Lenis from "lenis";
+import { HistoryVideosModal } from "./components/historyVideosModal";
+import { cn } from "@/utils";
 
+interface VideoEvent extends Event {
+  target: HTMLVideoElement;
+}
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();
@@ -118,12 +123,14 @@ export default function Home() {
     {
       id: 1,
       image: "/newImg/h1.png",
+      videoUrl: "/video/1.mp4",
       title:
         "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
     },
     {
       id: 2,
       image: "/newImg/h2.png",
+      videoUrl: "/video/2.mp4",
       title:
         "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
     },
@@ -134,11 +141,56 @@ export default function Home() {
         "Seguimos inovando e contribuindo para o futuro da pecuária , sempre ao lado de quem confia na nossa expertise.",
     },
   ];
+  const [isOpenVideoModal, setIsOpenVideoModal] = useState(false);
+  function handleCloseModal() {
+    setIsOpenVideoModal(false);
+  }
+  const [videoUrl, setVideoUrl] = useState("");
+  function handleClick(videoUrl: string) {
+    //video aqui
+    // setIsOpenVideoModal(true);
+    // setVideoUrl(videoUrl);
+  }
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isVideoStarted, setIsVideoStarted] = useState(false);
+
+  const handleVideoStart = (event: VideoEvent) => {
+    const videoElement = event.target;
+
+    // Verifica se o vídeo está carregado e começou a tocar
+    if (videoElement.currentTime > 0) {
+      setIsVideoStarted(true);
+    }
+  };
+  const [showImage, setShowImage] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowImage(false);
+    }, 1500);
+    setTimeout(() => {
+      setIsImageLoaded(true);
+    }, 1000);
+  }, [isVideoStarted]);
 
   return (
     <>
+      <div
+        className={cn(
+          `fixed z-50 flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-1000`,
+          !showImage && "-z-50 opacity-0",
+        )}
+      >
+        <Image
+          className="h-max w-60 object-contain"
+          alt=""
+          width={500}
+          height={500}
+          src="/fullLogoWhite.png"
+        />
+        <p>Carregando...</p>
+      </div>
       <div className="flex h-full w-full flex-col items-center bg-[#0A0A0A]">
-        <main className="relative flex w-full flex-col">
+        <main className="relative z-40 flex w-full flex-col">
           <Header mobile />
           {/* HERO MOBILE */}
           <section
@@ -364,6 +416,8 @@ export default function Home() {
                     preload="auto"
                     muted
                     loop
+                    onLoadedData={() => setIsImageLoaded(true)} // Fallback para dados carregados
+                    onTimeUpdate={handleVideoStart} // Garante que a variável muda ao reproduzir
                   />
                   <motion.div
                     id="calculator"
@@ -415,12 +469,139 @@ export default function Home() {
               <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:px-24 lg:py-16">
                 <Marquee gradient={false} pauseOnHover speed={100}>
                   <div className="flex space-x-24 px-24 text-xl font-bold text-[#585858]">
-                    <span>FOCO CONSULTORIA</span>
-                    <span>FOCO CONSULTORIA</span>
-                    <span>FOCO CONSULTORIA</span>
-                    <span>FOCO CONSULTORIA</span>
-                    <span>FOCO CONSULTORIA</span>
-                    <span>FOCO CONSULTORIA</span>
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://www.fazendasreunidas.agr.br/")
+                      }
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/1.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/7.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://www.instagram.com/confinamentomp/")
+                      }
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/2.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/8.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://www.instagram.com/campanellioficial/")
+                      }
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/3.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/9.png"}
+                      />
+                    </button>
+                    <button
+                      // onClick={() =>
+                      //   (window.location.href =
+                      //     "https://main.d389nhgdmdu5e2.amplifyapp.com")
+                      // }
+                      disabled
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/4.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/10.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://www.instagram.com/realbeef.confinamento/")
+                      }
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/5.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/11.png"}
+                      />
+                    </button>
+                    <button
+                      onClick={() =>
+                        (window.location.href =
+                          "https://mfgagropecuaria.com.br/")
+                      }
+                      className="group relative"
+                    >
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="h-[50px] w-[100px] opacity-0 group-hover:opacity-100"
+                        src={"/logos/6.png"}
+                      />
+                      <Image
+                        alt=""
+                        width={1000}
+                        height={500}
+                        className="absolute left-0 top-0 h-[50px] w-[100px] opacity-100 group-hover:opacity-0"
+                        src={"/logos/12.png"}
+                      />
+                    </button>
                   </div>
                 </Marquee>
               </section>
@@ -623,8 +804,12 @@ export default function Home() {
                       <SwiperSlide key={item.id}>
                         <motion.button
                           onClick={() =>
-                            (window.location.href =
-                              "https://www.instagram.com/foco.saudeanimal/")
+                            item.videoUrl
+                              ? handleClick(item.videoUrl)
+                              : window.open(
+                                  "https://www.instagram.com/foco.saudeanimal/",
+                                  "_blank",
+                                )
                           }
                           initial={{ opacity: 0, y: 50 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -735,7 +920,7 @@ export default function Home() {
             </section>
           </div>
         </main>
-        <footer className="my-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg border border-[#8F1220] bg-black px-4 py-2 shadow shadow-[#8F1220] md:flex-row">
+        <footer className="z-40 my-10 flex w-[80%] flex-col items-center justify-between gap-4 self-center rounded-lg border border-[#8F1220] bg-black px-4 py-2 shadow shadow-[#8F1220] md:flex-row">
           <button>
             <Image
               className="h-16 w-max object-contain transition-all duration-300 hover:scale-[1.05]"
@@ -784,7 +969,11 @@ export default function Home() {
           </div>
         </footer>
       </div>
-
+      <HistoryVideosModal
+        isOpen={isOpenVideoModal}
+        onClose={() => handleCloseModal()}
+        videoUrl={videoUrl}
+      />
       <MedicationCalculator
         openMedicationCalculator={openMedicationCalculator}
         setOpenMedicationCalculator={setOpenMedicationCalculator}
