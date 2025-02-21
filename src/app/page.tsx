@@ -13,9 +13,9 @@ import Lenis from "lenis";
 import { HistoryVideosModal } from "./components/historyVideosModal";
 import { cn } from "@/utils";
 
-interface VideoEvent extends Event {
-  target: HTMLVideoElement;
-}
+// interface VideoEvent extends Event {
+//   target: HTMLVideoElement;
+// }
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();
@@ -123,14 +123,14 @@ export default function Home() {
     {
       id: 1,
       image: "/newImg/h1.png",
-      videoUrl: "/video/1.mp4",
+      videoUrl: "https://www.youtube.com/embed/O5N109bOH0E",
       title:
         "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
     },
     {
       id: 2,
       image: "/newImg/h2.png",
-      videoUrl: "/video/2.mp4",
+      videoUrl: "https://www.youtube.com/embed/HV67gHrGFF0",
       title:
         "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
     },
@@ -147,17 +147,18 @@ export default function Home() {
   }
   const [videoUrl, setVideoUrl] = useState("");
   function handleClick(videoUrl: string) {
-    //video aqui
-    // setIsOpenVideoModal(true);
-    // setVideoUrl(videoUrl);
+    setIsOpenVideoModal(true);
+    setVideoUrl(videoUrl);
   }
   const [isVideoStarted, setIsVideoStarted] = useState(false);
 
-  const handleVideoStart = (event: VideoEvent) => {
-    const videoElement = event.target;
+  const handleVideoStart = (
+    event: React.SyntheticEvent<HTMLVideoElement, Event>,
+  ) => {
+    const videoElement = event.target as HTMLVideoElement;
 
     // Verifica se o vídeo está carregado e começou a tocar
-    if (videoElement.currentTime > 0) {
+    if ((videoElement as HTMLVideoElement).currentTime > 0) {
       setIsVideoStarted(true);
     }
   };
