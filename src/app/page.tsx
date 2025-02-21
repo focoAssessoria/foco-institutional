@@ -151,7 +151,6 @@ export default function Home() {
     // setIsOpenVideoModal(true);
     // setVideoUrl(videoUrl);
   }
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isVideoStarted, setIsVideoStarted] = useState(false);
 
   const handleVideoStart = (event: VideoEvent) => {
@@ -163,21 +162,23 @@ export default function Home() {
     }
   };
   const [showImage, setShowImage] = useState(true);
+  const [zDelay, setZDelay] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setShowImage(false);
     }, 1500);
     setTimeout(() => {
-      setIsImageLoaded(true);
-    }, 1000);
+      setZDelay(true);
+    }, 1750);
   }, [isVideoStarted]);
 
   return (
     <>
       <div
         className={cn(
-          `fixed z-50 flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-1000`,
-          !showImage && "-z-50 opacity-0",
+          `fixed z-50 flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-500 ease-in-out`,
+          !showImage && "opacity-5",
+          zDelay && "-z-50",
         )}
       >
         <Image
@@ -416,7 +417,6 @@ export default function Home() {
                     preload="auto"
                     muted
                     loop
-                    onLoadedData={() => setIsImageLoaded(true)} // Fallback para dados carregados
                     onTimeUpdate={handleVideoStart} // Garante que a variável muda ao reproduzir
                   />
                   <motion.div
