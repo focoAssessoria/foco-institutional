@@ -468,7 +468,12 @@ export default function Home() {
             <div ref={scrollToRef} className="relative -mt-20 flex flex-col">
               <div className="absolute right-0 z-30 h-full w-[100px] bg-gradient-to-r from-[#0A0A0A] to-[#8F1220]/80"></div>
               <section className="z-[40] mt-60 flex items-center justify-between px-0 py-8 text-xl font-bold text-[#585858] lg:py-16">
-                <Marquee gradient={false} pauseOnHover speed={100}>
+                <Marquee
+                  gradient={false}
+                  pauseOnHover
+                  speed={100}
+                  className="bg-white"
+                >
                   <div className="flex space-x-24 bg-white px-24 py-8 text-xl font-bold text-[#585858]">
                     <button
                       onClick={() =>
@@ -995,24 +1000,14 @@ export default function Home() {
             </span>
             <span className="text-[10px]">
               <span
-                onClick={() =>
-                  window.open(
-                    "https://docs.google.com/document/d/1tr1uXiM04raMVzxWTNtaxBcNqjsvxBiPxcZh6SGNWkY/edit?tab=t.0",
-                    "_blank",
-                  )
-                }
+                onClick={() => router.push("/terms")}
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Termos de uso
               </span>{" "}
               {""}e {""}
               <span
-                onClick={() =>
-                  window.open(
-                    "https://docs.google.com/document/d/1pOWtBZ7IftrWnyl3c94chZtksyaZa0tTZraUi7EljJs/edit?usp=sharing",
-                    "_blank",
-                  )
-                }
+                onClick={() => router.push("/policy")}
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Política de privacidade
