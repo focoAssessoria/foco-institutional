@@ -993,6 +993,31 @@ export default function Home() {
             <span className="text-xs font-semibold">
               Executivo&apos;s Negócios Digitais LTDA
             </span>
+            <span className="text-[10px]">
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/document/d/1tr1uXiM04raMVzxWTNtaxBcNqjsvxBiPxcZh6SGNWkY/edit?tab=t.0",
+                    "_blank",
+                  )
+                }
+                className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
+              >
+                Termos de uso
+              </span>{" "}
+              {""}e {""}
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/document/d/1pOWtBZ7IftrWnyl3c94chZtksyaZa0tTZraUi7EljJs/edit?usp=sharing",
+                    "_blank",
+                  )
+                }
+                className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
+              >
+                Política de privacidade
+              </span>
+            </span>
           </div>
         </footer>
       </div>
