@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import "react-accessible-accordion/dist/fancy-example.css";
@@ -1000,19 +999,19 @@ export default function Home() {
               Executivo&apos;s Negócios Digitais LTDA
             </span>
             <span className="text-[10px]">
-              <Link
+              <a
                 href="https://focosaudeanimal.com.br/terms"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Termos de uso
-              </Link>
+              </a>
               {""} e {""}
-              <Link
+              <a
                 href="https://focosaudeanimal.com.br/policy"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Política de privacidade
-              </Link>
+              </a>
             </span>
           </div>
         </footer>
