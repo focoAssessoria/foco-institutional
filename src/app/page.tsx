@@ -1,17 +1,18 @@
 "use client";
-import Image from "next/image";
+import { cn } from "@/utils";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Lenis from "lenis";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import "react-accessible-accordion/dist/fancy-example.css";
-import { motion, useTransform, useScroll } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRouter } from "next/navigation";
 import { Header } from "./components/Header";
 import { MedicationCalculator } from "./components/MedicationCalculator";
-import Lenis from "lenis";
 import { HistoryVideosModal } from "./components/historyVideosModal";
-import { cn } from "@/utils";
 
 // interface VideoEvent extends Event {
 //   target: HTMLVideoElement;
@@ -999,19 +1000,19 @@ export default function Home() {
               Executivo&apos;s Negócios Digitais LTDA
             </span>
             <span className="text-[10px]">
-              <span
-                onClick={() => router.push("/terms")}
+              <Link
+                href="/terms"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Termos de uso
-              </span>{" "}
+              </Link>{" "}
               {""}e {""}
-              <span
-                onClick={() => router.push("/policy")}
+              <Link
+                href="/policy"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Política de privacidade
-              </span>
+              </Link>
             </span>
           </div>
         </footer>
