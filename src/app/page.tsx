@@ -149,7 +149,7 @@ export default function Home() {
     setIsOpenVideoModal(true);
     setVideoUrl(videoUrl);
   }
-  const [isVideoStarted, setIsVideoStarted] = useState(false);
+  const [, setIsVideoStarted] = useState(false);
 
   const handleVideoStart = (
     event: React.SyntheticEvent<HTMLVideoElement, Event>,
@@ -161,16 +161,16 @@ export default function Home() {
       setIsVideoStarted(true);
     }
   };
-  const [showImage, setShowImage] = useState(true);
-  const [zDelay, setZDelay] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowImage(false);
-    }, 1500);
-    setTimeout(() => {
-      setZDelay(true);
-    }, 1750);
-  }, [isVideoStarted]);
+  // const [showImage, setShowImage] = useState(true);
+  // const [zDelay, setZDelay] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowImage(false);
+  //   }, 1500);
+  //   setTimeout(() => {
+  //     setZDelay(true);
+  //   }, 1750);
+  // }, [isVideoStarted]);
 
   return (
     <>
@@ -848,7 +848,7 @@ export default function Home() {
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
                           viewport={{ once: true }}
-                          className="group relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl rounded-md bg-black/20 bg-white p-2 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
+                          className="group relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl bg-black/20 bg-white p-2 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
                         >
                           <Image
                             alt=""
