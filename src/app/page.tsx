@@ -1,5 +1,4 @@
 "use client";
-import { cn } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
 import { ArrowRight } from "lucide-react";
@@ -175,7 +174,7 @@ export default function Home() {
 
   return (
     <>
-      <div
+      {/* <div
         className={cn(
           `fixed z-50 flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-500 ease-in-out`,
           !showImage && "opacity-5",
@@ -190,7 +189,7 @@ export default function Home() {
           src="/fullLogoWhite.png"
         />
         <p>Carregando...</p>
-      </div>
+      </div> */}
       <div className="flex h-full w-full flex-col items-center bg-[#0A0A0A]">
         <main className="relative z-40 flex w-full flex-col">
           <Header mobile />
