@@ -1001,14 +1001,14 @@ export default function Home() {
             </span>
             <span className="text-[10px]">
               <Link
-                href="/terms"
+                href="https://focosaudeanimal.com.br/terms"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Termos de uso
-              </Link>{" "}
-              {""}e {""}
+              </Link>
+              {""} e {""}
               <Link
-                href="/policy"
+                href="https://focosaudeanimal.com.br/policy"
                 className="cursor-pointer underline transition duration-200 hover:text-[#8F1220]"
               >
                 Política de privacidade
