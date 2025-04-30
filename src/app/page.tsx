@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
 import { ArrowRight } from "lucide-react";
@@ -149,7 +150,7 @@ export default function Home() {
     setIsOpenVideoModal(true);
     setVideoUrl(videoUrl);
   }
-  const [, setIsVideoStarted] = useState(false);
+  const [isVideoStarted, setIsVideoStarted] = useState(false);
 
   const handleVideoStart = (
     event: React.SyntheticEvent<HTMLVideoElement, Event>,
@@ -161,20 +162,20 @@ export default function Home() {
       setIsVideoStarted(true);
     }
   };
-  // const [showImage, setShowImage] = useState(true);
-  // const [zDelay, setZDelay] = useState(false);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setShowImage(false);
-  //   }, 1500);
-  //   setTimeout(() => {
-  //     setZDelay(true);
-  //   }, 1750);
-  // }, [isVideoStarted]);
+  const [showImage, setShowImage] = useState(true);
+  const [zDelay, setZDelay] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowImage(false);
+    }, 1500);
+    setTimeout(() => {
+      setZDelay(true);
+    }, 1750);
+  }, [isVideoStarted]);
 
   return (
     <>
-      {/* <div
+      <div
         className={cn(
           `fixed z-50 flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-500 ease-in-out`,
           !showImage && "opacity-5",
@@ -189,7 +190,7 @@ export default function Home() {
           src="/fullLogoWhite.png"
         />
         <p>Carregando...</p>
-      </div> */}
+      </div>
       <div className="flex h-full w-full flex-col items-center bg-[#0A0A0A]">
         <main className="relative z-40 flex w-full flex-col">
           <Header mobile />
@@ -881,7 +882,7 @@ export default function Home() {
 
             <section
               id="ai"
-              className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white lg:h-screen lg:px-24 lg:py-16 lg:pb-20"
+              className="relative z-40 flex w-full flex-col items-center justify-center rounded-t-3xl bg-[#0A0A0A] px-4 py-8 text-white xl:h-screen xl:px-24 xl:py-16 xl:pb-20"
             >
               <Image
                 className="absolute right-0 top-20 z-50 h-[50vh] w-auto"
@@ -924,29 +925,70 @@ export default function Home() {
                 </motion.div>
 
                 <motion.div
-                  className="mb-10 mt-10 flex w-full flex-col items-center justify-evenly gap-8 md:flex-row"
+                  className="mb-10 mt-10 flex w-full flex-col-reverse items-center gap-4 xl:flex-row xl:gap-8"
                   variants={textVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
-                    <Image
-                      className="h-full w-full"
-                      alt=""
-                      width={400}
-                      height={400}
-                      src={"/newImg/Vacine.png"}
-                    />
+                  <div className="flex flex-col gap-4 rounded-lg border border-[#8F1220] bg-black px-4 py-2 shadow shadow-[#8F1220]">
+                    <div className="flex flex-col justify-center">
+                      <span className="mx-auto text-center text-lg font-semibold">
+                        Tem alguma Dúvida? Entre em contato
+                      </span>
+                      <span className="mx-auto w-80 text-center text-xs text-zinc-300">
+                        Preencha o formulário abaixo para que nossos
+                        especialistas possam te ajudar.
+                      </span>
+                    </div>
+                    <div className="flex flex-col justify-between gap-4">
+                      <div className="flex flex-col">
+                        <label>Nome</label>
+                        <input
+                          type="text"
+                          className="h-10 w-full rounded-md border border-zinc-300 bg-transparent p-2 text-xs text-white placeholder:text-zinc-400 focus:outline-none"
+                          placeholder="Seu Nome"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <label>Email</label>
+                        <input
+                          type="text"
+                          className="h-10 w-full rounded-md border border-zinc-300 bg-transparent p-2 text-xs text-white placeholder:text-zinc-400 focus:outline-none"
+                          placeholder="seuemail@gmail.com"
+                        />
+                      </div>
+                      <div className="flex w-80 flex-col">
+                        <label>Qual seu Problema?</label>
+                        <textarea
+                          className="h-10 w-full resize-none overflow-y-hidden rounded-md border border-zinc-300 bg-transparent p-2 text-xs text-white placeholder:justify-center placeholder:text-zinc-400 focus:outline-none"
+                          placeholder="Descreva brevemente seu problema..."
+                        />
+                      </div>
+                      <button className="h-10 w-24 self-end rounded-md bg-[#8F1220] p-2 font-semibold text-white shadow-sm transition-all duration-300">
+                        ENVIAR
+                      </button>
+                    </div>
                   </div>
-                  <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
-                    <Image
-                      className="h-full w-full"
-                      alt=""
-                      width={400}
-                      height={400}
-                      src={"/newImg/boi.png"}
-                    />
+                  <div className="flex w-full flex-col items-center justify-evenly gap-8 md:flex-row">
+                    <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                      <Image
+                        className="h-full w-full"
+                        alt=""
+                        width={400}
+                        height={400}
+                        src={"/newImg/Vacine.png"}
+                      />
+                    </div>
+                    <div className="h-64 w-64 overflow-hidden rounded-2xl lg:h-[400px] lg:w-[390px]">
+                      <Image
+                        className="h-full w-full"
+                        alt=""
+                        width={400}
+                        height={400}
+                        src={"/newImg/boi.png"}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               </div>
