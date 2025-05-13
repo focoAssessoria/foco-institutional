@@ -78,7 +78,7 @@ export function Header({ mobile }: HeaderProps) {
         <div className="hidden w-2/5 flex-row items-center justify-end gap-4 lg:flex">
           <button
             onClick={() =>
-              (window.location.href = "https://admin.focosaudeanimal.com.br")
+              window.open("https://admin.focosaudeanimal.com.br", "_blank")
             }
             className="rounded-md border border-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
           >
@@ -86,7 +86,7 @@ export function Header({ mobile }: HeaderProps) {
           </button>
           <button
             onClick={() =>
-              (window.location.href = "https://client.focosaudeanimal.com.br")
+              window.open("https://client.focosaudeanimal.com.br", "_blank")
             }
             className="rounded-md border border-[#0A0A0A]/90 bg-[#DC2626] p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
           >
@@ -134,7 +134,7 @@ export function Header({ mobile }: HeaderProps) {
           <div className="flex w-full flex-col items-center justify-between gap-4">
             <button
               onClick={() =>
-                (window.location.href = "https://admin.focosaudeanimal.com.br")
+                window.open("https://admin.focosaudeanimal.com.br", "_blank")
               }
               className="rounded-md border border-white p-2 text-[12px] transition-all duration-200 hover:scale-[1.02]"
             >
@@ -142,7 +142,7 @@ export function Header({ mobile }: HeaderProps) {
             </button>
             <button
               onClick={() =>
-                (window.location.href = "https://client.focosaudeanimal.com.br")
+                window.open("https://client.focosaudeanimal.com.br", "_blank")
               }
               className="rounded-md border border-[#DC2626] bg-white p-2 text-[12px] text-[#DC2626] transition-all duration-200 hover:scale-[1.02]"
             >

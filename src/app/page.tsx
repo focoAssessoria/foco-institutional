@@ -123,14 +123,14 @@ export default function Home() {
     {
       id: 1,
       image: "/newImg/h1.png",
-      videoUrl: "https://www.youtube.com/embed/O5N109bOH0E",
+      videoUrl: "https://www.youtube.com/embed/HV67gHrGFF0",
       title:
         "Nasceu do desejo de fazer a diferença no cuidado com o rebanho e no apoio aos produtores rurais, sempre com dedicação e profissionalismo.",
     },
     {
       id: 2,
       image: "/newImg/h2.png",
-      videoUrl: "https://www.youtube.com/embed/HV67gHrGFF0",
+      videoUrl: "https://www.youtube.com/embed/O5N109bOH0E",
       title:
         "Ao longo dos anos, fortalecemos parcerias, aprendemos com cada desafio e construímos uma base sólida de experiência e resultados.",
     },
@@ -318,7 +318,7 @@ export default function Home() {
               height={500}
               src="/2.png"
             />
-            <div className="sticky top-0 z-[80] flex h-screen w-full justify-center">
+            <div className="sticky top-0 z-[80] flex h-screen w-full justify-center 3xl:h-[72vh]">
               <motion.div
                 className="relative flex w-full flex-col items-center rounded-lg px-4 py-16 lg:px-0"
                 transition={{
@@ -385,7 +385,12 @@ export default function Home() {
                     </h1>
                     <div className="flex w-2/3 flex-row gap-4 lg:w-auto">
                       <button
-                        onClick={() => scrollToSessao2()}
+                        onClick={() =>
+                          window.open(
+                            "https://apps.apple.com/us/app/foco-sa%C3%BAde-animal/id6742755070",
+                            "_blank",
+                          )
+                        }
                         className="mt-8 scale-90 rounded-md transition-all duration-300 hover:scale-100"
                       >
                         <Image
@@ -397,7 +402,12 @@ export default function Home() {
                         />
                       </button>
                       <button
-                        onClick={() => scrollToSessao2()}
+                        onClick={() =>
+                          window.open(
+                            "https://play.google.com/store/apps/details?id=com.foco.saudeanimal",
+                            "_blank",
+                          )
+                        }
                         className="mt-8 scale-90 rounded-md transition-all duration-300 hover:scale-100"
                       >
                         <Image
@@ -858,7 +868,7 @@ export default function Home() {
                             src={item.image}
                             className="absolute top-0 z-10 h-full w-full object-cover"
                           />
-                          <div className="z-20 flex h-full w-full flex-col gap-4 bg-black/40 p-4 pb-8 pt-12 transition-all duration-300 hover:bg-black/0 md:pt-16 lg:pt-4">
+                          <div className="z-20 flex h-full w-full flex-col gap-4 rounded-xl bg-black/40 p-4 pb-8 pt-12 transition-all duration-300 hover:bg-black/0 md:pt-16 lg:pt-4">
                             <div className="h-1/3 w-full md:h-1/2"></div>
                             <div className="flex h-2/3 w-full items-center md:h-1/2">
                               <span className="text-start font-semibold text-white transition-all duration-300 group-hover:text-white">
@@ -1008,7 +1018,7 @@ export default function Home() {
           <div className="flex h-full flex-col justify-center gap-1">
             <button
               onClick={() =>
-                (window.location.href = "https://admin.focosaudeanimal.com.br")
+                window.open("https://admin.focosaudeanimal.com.br", "_blank")
               }
               className="rounded-md border border-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
             >
@@ -1016,7 +1026,7 @@ export default function Home() {
             </button>
             <button
               onClick={() =>
-                (window.location.href = "https://client.focosaudeanimal.com.br")
+                window.open("https://client.focosaudeanimal.com.br", "_blank")
               }
               className="rounded-md border border-[#8F1220] bg-[#8F1220] px-2 py-0.5 text-[10px] text-white transition-all duration-300 hover:bg-[#8F1220] hover:text-white"
             >
