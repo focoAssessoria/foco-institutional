@@ -189,7 +189,7 @@ export default function Home() {
           height={500}
           src="/fullLogoWhite.png"
         />
-        <p>Carregando...</p>
+        <p className="text-white">Carregando...</p>
       </div>
       <div className="flex h-full w-full flex-col items-center bg-[#0A0A0A]">
         <main className="relative z-40 flex w-full flex-col">
@@ -433,7 +433,7 @@ export default function Home() {
                   <motion.div
                     id="calculator"
                     style={{ opacity: reverseOpacity }}
-                    className="z-[60] flex h-full w-full flex-col justify-evenly p-4 text-right lg:flex-row lg:items-end lg:justify-between"
+                    className="z-[60] flex h-full w-full flex-col justify-evenly p-4 text-right text-white lg:flex-row lg:items-end lg:justify-between"
                   >
                     <div className="flex w-full flex-col items-center">
                       <div className="flex w-[80%] items-end">
@@ -1042,7 +1042,7 @@ export default function Home() {
               src="/14.png"
             />
           </button>
-          <div className="flex flex-col md:items-end">
+          <div className="flex flex-col text-white md:items-end">
             <span className="text-xs lg:text-lg">
               Tecnologia Desenvolvida por
             </span>

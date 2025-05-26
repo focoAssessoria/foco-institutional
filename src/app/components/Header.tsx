@@ -35,7 +35,7 @@ export function Header({ mobile }: HeaderProps) {
     <>
       <div
         className={twMerge(
-          "sticky top-2 z-[9999] mx-auto flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 p-2",
+          "sticky top-2 z-[9999] mx-auto flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 p-2 text-white",
           mobile && "w-11/12 lg:hidden",
         )}
       >
