@@ -1,4 +1,6 @@
 "use client";
+import { maskPhone } from "@/app/utils/utils";
+import { doc, setDoc } from "firebase/firestore";
 import {
   ChevronLeft,
   LogIn,
@@ -8,16 +10,14 @@ import {
   Syringe,
   User,
 } from "lucide-react";
+import moment from "moment";
+import { useCookies } from "next-client-cookies";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
-import { CalculatorCard } from "../components/CalculatorCard";
 import LockAnim from "../../../public/lockAnim.json";
-import moment from "moment";
-import { maskPhone } from "@/utils";
+import { CalculatorCard } from "../components/CalculatorCard";
 import { db } from "../utils/firebase"; // Import do arquivo Firebase
-import { setDoc, doc } from "firebase/firestore";
-import { useCookies } from "next-client-cookies";
 
 export default function MortalityCalculator() {
   const cookies = useCookies();

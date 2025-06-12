@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/utils";
+import { cn } from "@/app/utils/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
 import { ArrowRight } from "lucide-react";
