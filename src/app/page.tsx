@@ -443,7 +443,7 @@ export default function Home() {
                         </h3>
                       </div>
                       <button
-                        onClick={() => router.push("/mortality-calculator")}
+                        onClick={() => router.push("/mortality/calculator")}
                         className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
                       >
                         <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
@@ -460,7 +460,7 @@ export default function Home() {
                         </h3>
                       </div>
                       <button
-                        onClick={() => setOpenMedicationCalculator(true)}
+                        onClick={() => router.push("/medication/calculator")}
                         className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
                       >
                         <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">

@@ -1,12 +1,22 @@
 "use client";
+import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function Header() {
+  const router = useRouter();
+
   return (
     <div className="relative flex h-16 w-full items-center justify-between border-b border-b-zinc-200 bg-[#171717] px-4 xl:h-20 2xl:h-28 2xl:px-8">
-      <span className="font-manrope hidden text-2xl font-bold xl:block">
-        CALCULADORA FOCO SAÚDE ANIMAL
-      </span>
+      <div
+        onClick={() => router.push("/")}
+        className="flex cursor-pointer items-center gap-2"
+      >
+        <ChevronLeft />
+        <span className="font-manrope hidden text-2xl font-bold xl:block">
+          CALCULADORA FOCO SAÚDE ANIMAL
+        </span>
+      </div>
       <Image
         src="/new-logo.png"
         alt=""

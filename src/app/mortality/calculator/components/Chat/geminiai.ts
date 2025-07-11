@@ -1,22 +1,19 @@
 import { GoogleGenAI } from "@google/genai";
 import { useEffect, useRef } from "react";
 import {
-  initialHistory,
-  PromptChatContext,
+  MortalityPromptChatContext,
   PromptMediaAnalysisContext,
 } from "./prompts";
 import { FileData, ImagePart } from "./types";
 
-const API_KEY = "AIzaSyBbx3wJVC5YYIXAyH000m777pblvlNtQWE";
 const genAI = new GoogleGenAI({
-  apiKey: API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_GEMINI_KEY,
 });
 
 export const MediaAnalysis = async (
   prompt = "Explique a imagem ",
   imageParts: ImagePart[],
 ) => {
-  console.log("Rodando");
   try {
     const result = await genAI.models.generateContent({
       model: "gemini-2.5-pro-preview-05-06",
@@ -26,7 +23,6 @@ export const MediaAnalysis = async (
       },
     });
 
-    console.log(result);
     const response = result.text;
 
     const text = response;
@@ -48,7 +44,7 @@ export function useChatSession(
     // Só cria a instância do GoogleGenAI uma vez
     if (!aiInstanceRef.current) {
       aiInstanceRef.current = new GoogleGenAI({
-        apiKey: API_KEY, // coloque sua chave em .env
+        apiKey: process.env.NEXT_PUBLIC_GEMINI_KEY, // coloque sua chave em .env
       });
     }
 
@@ -58,12 +54,12 @@ export function useChatSession(
         model: "gemini-2.0-flash",
         // history: initialHistory,
         config: {
-          systemInstruction: PromptChatContext,
+          systemInstruction: MortalityPromptChatContext,
         },
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chatSessionRef, initialHistory]);
+  }, [chatSessionRef]);
 }
 
 export function makePrompt(fd: FileData) {

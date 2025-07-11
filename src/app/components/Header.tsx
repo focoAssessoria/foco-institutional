@@ -1,6 +1,7 @@
 "use client";
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -9,6 +10,7 @@ interface HeaderProps {
 }
 
 export function Header({ mobile }: HeaderProps) {
+  const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   useEffect(() => {
     if (isSidebarOpen) {
@@ -54,10 +56,16 @@ export function Header({ mobile }: HeaderProps) {
         </button>
         <div className="hidden w-full flex-row items-center justify-evenly lg:flex">
           <button
-            onClick={() => scrollToBottom("calculator")}
+            onClick={() => router.push("/mortality/calculator")}
             className="text-sm"
           >
-            Calculadora de medicamentos
+            Calculadora de Mortalidade
+          </button>
+          <button
+            onClick={() => router.push("/medication/calculator")}
+            className="text-sm"
+          >
+            Calculadora de Medicamentos
           </button>
           <button
             className="text-sm"

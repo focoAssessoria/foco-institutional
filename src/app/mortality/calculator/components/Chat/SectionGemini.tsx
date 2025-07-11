@@ -17,6 +17,7 @@ import {
   TooltipTrigger,
 } from "./tooltip";
 import { Message } from "./types";
+
 export function Section() {
   const [isClicked, setIsClicked] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -108,7 +109,7 @@ export function Section() {
             width="100%"
             height="100%"
             className="h-full w-full rounded-lg"
-            src="https://www.youtube.com/embed/uaS75cHC3iU?si=ryeyLyGlW_Hc2ryO?&autoplay=1"
+            src="https://www.youtube.com/embed/O5N109bOH0E?si=53uDW-eOddbw_TEg"
             title="YouTube video player"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
@@ -203,7 +204,7 @@ export function Section() {
                               className="flex flex-col items-center gap-1"
                             >
                               <Image
-                                src={"./pdf3.svg"}
+                                src={"/pdf3.svg"}
                                 alt=""
                                 width={100}
                                 height={100}
@@ -265,7 +266,7 @@ export function Section() {
                   <TooltipTrigger asChild>
                     <button className="relative flex h-6 w-6 items-center justify-center overflow-hidden rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
                       <Image
-                        src={"./pdf3.svg"}
+                        src={"/pdf3.svg"}
                         alt=""
                         width={100}
                         height={100}
@@ -295,7 +296,7 @@ export function Section() {
                   <TooltipTrigger asChild>
                     <button className="relative flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
                       <Image
-                        src={"./photo3.svg"}
+                        src={"/photo3.svg"}
                         alt=""
                         width={100}
                         height={100}
