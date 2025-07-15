@@ -100,6 +100,16 @@ export function Section() {
   //   }, 5000);
   // }, []);
 
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth", // ou "smooth", se preferir animado
+      block: "end", // <-- garante que ficará colado embaixo
+      inline: "nearest",
+    });
+  }, [messages]);
+
   return (
     <div className="h-[calc(100vh-80px)] w-full bg-[#171717] p-2 2xl:h-[calc(100vh-112px)] 2xl:p-8">
       <div className="relative flex h-full w-full flex-col items-center justify-between gap-2 overflow-hidden rounded-lg border border-[#DC2626] bg-[url('/calculator-bg.png')] bg-cover bg-center bg-no-repeat p-2 lg:flex-row lg:gap-4 lg:p-4 xl:p-8 2xl:gap-20 2xl:p-20">
@@ -162,7 +172,7 @@ export function Section() {
                   <div
                     key={index}
                     className={cn(
-                      "my-2 flex gap-2 self-end",
+                      "my-2 flex w-full gap-2",
                       message.role === "user" ? "justify-end" : "justify-start",
                     )}
                   >
@@ -256,6 +266,7 @@ export function Section() {
                     )}
                   </div>
                 ))}
+                <div ref={messagesEndRef} />
               </ScrollArea>
             </div>
           </div>

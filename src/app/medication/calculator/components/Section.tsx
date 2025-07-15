@@ -4,7 +4,7 @@ import { handleSendStreamMessage } from "@/app/utils/chatFunctions";
 import { cn } from "@/app/utils/utils";
 import { Mic } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface MessageProps {
   role: "user" | "assistant";
@@ -36,6 +36,16 @@ export function Section() {
       setInputMessage("");
     }
   };
+
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth", // ou "smooth", se preferir animado
+      block: "end", // <-- garante que ficará colado embaixo
+      inline: "nearest",
+    });
+  }, [messages]);
 
   //   const handleUploadAudio = async (file: File) => {
   //     console.log("entrou");
@@ -174,6 +184,7 @@ export function Section() {
                     )}
                   </div>
                 ))}
+                <div ref={messagesEndRef} />
               </ScrollArea>
             </div>
           </div>
