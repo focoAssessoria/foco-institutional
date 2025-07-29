@@ -16,7 +16,7 @@ export const MediaAnalysis = async (
 ) => {
   try {
     const result = await genAI.models.generateContent({
-      model: "gemini-2.5-pro-preview-05-06",
+      model: "gemini-2.5-flash",
       contents: [prompt, ...imageParts],
       config: {
         systemInstruction: PromptMediaAnalysisContext,
