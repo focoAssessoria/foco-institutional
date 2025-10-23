@@ -10,8 +10,9 @@ import "react-accessible-accordion/dist/fancy-example.css";
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Header } from "./components/Header";
-import { MedicationCalculator } from "./components/MedicationCalculator";
 import { HistoryVideosModal } from "./components/historyVideosModal";
+import { MedicationCalculator } from "./components/MedicationCalculator";
+import VirtualTour from "./components/VirtualTour";
 
 // interface VideoEvent extends Event {
 //   target: HTMLVideoElement;
@@ -649,7 +650,14 @@ export default function Home() {
                   </div>
                 </Marquee>
               </section>
-
+              <section
+                id="toor"
+                className="relative z-50 flex h-[50vh] w-full flex-col items-center justify-center bg-[#0A0A0A] px-4 text-white md:z-10 md:h-[60vh] md:px-[20%]"
+              >
+                <div className="h-full w-full overflow-hidden rounded-2xl">
+                  <VirtualTour />
+                </div>
+              </section>
               <section
                 id="service"
                 className="relative flex w-full flex-col items-center justify-center bg-[#0A0A0A] text-white lg:h-screen"
