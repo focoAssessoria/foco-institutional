@@ -48,14 +48,10 @@ export function Section() {
   }, [messages]);
 
   //   const handleUploadAudio = async (file: File) => {
-  //     console.log("entrou");
   //     const formData = new FormData();
   //     const sanitizedFileName = file.name.replace(/\s+/g, "-");
   //     formData.append("file", file, sanitizedFileName);
-  //     console.log("formData", formData);
-  //     console.log("file", file);
   //     const test = await transcription(formData);
-  //     console.log("test", test);
   //   };
 
   //   async function handleUploadFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -66,7 +62,6 @@ export function Section() {
   //     }
   //     const url = await handleUploadAudio(selectedFile);
   //     if (url) {
-  //       console.log("URL:", url);
   //     }
   //   }
 

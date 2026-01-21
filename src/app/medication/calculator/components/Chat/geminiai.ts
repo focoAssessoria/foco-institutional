@@ -14,7 +14,6 @@ export const MediaAnalysis = async (
   prompt = "Explique a imagem ",
   imageParts: ImagePart[],
 ) => {
-  console.log("Rodando");
   try {
     const result = await genAI.models.generateContent({
       model: "gemini-2.5-flash",
@@ -24,7 +23,6 @@ export const MediaAnalysis = async (
       },
     });
 
-    console.log(result);
     const response = result.text;
 
     const text = response;

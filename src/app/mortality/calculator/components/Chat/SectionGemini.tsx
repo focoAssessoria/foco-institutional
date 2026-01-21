@@ -373,13 +373,10 @@ export function Section() {
                 disabled={loading}
                 onClick={() => {
                   if (fileData?.mimeType.startsWith("audio/")) {
-                    console.log("entrou");
                     handleSendFile();
                   } else if (isRecording) {
-                    console.log("entrou2");
                     stopRecording();
                   } else {
-                    console.log("entrou3");
                     startRecording();
                   }
                 }}
