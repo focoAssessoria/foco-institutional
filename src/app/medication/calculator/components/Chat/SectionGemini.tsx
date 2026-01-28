@@ -127,7 +127,7 @@ export function Section() {
             >
               <Image
                 src="/logo-badge.png"
-                alt=""
+                alt="Logo Foco Saúde Animal"
                 width={1000}
                 height={1000}
                 className="shadow-primary h-10 w-10 rounded-full shadow-lg lg:h-14 lg:w-14 2xl:h-32 2xl:w-32"
@@ -175,7 +175,7 @@ export function Section() {
                             <>
                               <Image
                                 src={message.file as string}
-                                alt=""
+                                alt="Imagem enviada pelo usuário"
                                 width={2500}
                                 height={2500}
                                 className="h-40 w-auto rounded-md"
@@ -204,7 +204,7 @@ export function Section() {
                             >
                               <Image
                                 src={"/pdf3.svg"}
-                                alt=""
+                                alt="Documento PDF"
                                 width={100}
                                 height={100}
                                 className="h-12 w-12"
@@ -219,7 +219,7 @@ export function Section() {
                         </div>
                         <Image
                           src="/logo-badge.png"
-                          alt=""
+                          alt="Avatar usuário"
                           width={250}
                           height={250}
                           className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
@@ -229,7 +229,7 @@ export function Section() {
                       <div className="flex max-w-[80%] justify-start gap-2 rounded-lg bg-[#DC2626]/20 p-1 text-start">
                         <Image
                           src="/logo-badge.png"
-                          alt=""
+                          alt="Avatar assistente"
                           width={250}
                           height={250}
                           className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
@@ -266,7 +266,7 @@ export function Section() {
                     <button className="relative flex h-6 w-6 items-center justify-center overflow-hidden rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
                       <Image
                         src={"/pdf3.svg"}
-                        alt=""
+                        alt="Anexar PDF"
                         width={100}
                         height={100}
                         className="h-full w-full"
@@ -296,7 +296,7 @@ export function Section() {
                     <button className="relative flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
                       <Image
                         src={"/photo3.svg"}
-                        alt=""
+                        alt="Anexar imagem ou vídeo"
                         width={100}
                         height={100}
                         className="h-full w-full"

@@ -19,7 +19,7 @@ export function Header() {
       </div>
       <Image
         src="/new-logo.png"
-        alt=""
+        alt="Logo Foco Saúde Animal"
         width={1000}
         height={500}
         className="absolute left-1/2 top-1/2 h-12 w-max -translate-x-1/2 -translate-y-1/2 object-contain xl:h-16"
@@ -36,7 +36,7 @@ export function Header() {
         Fale Conosco
         <Image
           src="/whats-icon.png"
-          alt=""
+          alt="Ícone WhatsApp"
           width={250}
           height={250}
           className="h-4 w-4 xl:h-6 xl:w-6"

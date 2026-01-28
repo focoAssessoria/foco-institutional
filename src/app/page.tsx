@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import "react-accessible-accordion/dist/fancy-example.css";
 import Marquee from "react-fast-marquee";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Header } from "./components/Header";
 import { HistoryVideosModal } from "./components/historyVideosModal";
 import { MedicationCalculator } from "./components/MedicationCalculator";
@@ -437,24 +436,32 @@ export default function Home() {
                     className="z-[60] flex h-full w-full flex-col justify-evenly p-4 text-right text-white lg:flex-row lg:items-end lg:justify-between"
                   >
                     <div className="flex w-full flex-col items-center">
-                      <div className="flex w-[80%] items-end">
-                        <h3 className="text-start">
+                      <div className="flex w-[80%] flex-col items-start gap-2">
+                        <h2 className="text-start text-lg font-semibold text-white">
+                          Calculadora de Mortalidade
+                        </h2>
+                        <h3 className="text-start text-white/95">
                           Calculadora desenvolvida para facilitar a tomada de
-                          decisões sobre o estado de saúde do rebanho.
+                          decisões sobre o estado de saúde do rebanho e apoiar
+                          a gestão preventiva na propriedade.
                         </h3>
                       </div>
                       <button
                         onClick={() => router.push("/mortality/calculator")}
-                        className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
+                        className="font-regular group mt-4 flex w-[80%] items-center justify-center gap-2 rounded-md border-2 border-[#8F1220] bg-white py-2.5 transition-all duration-300 hover:scale-[1.03] hover:border-[#8F1220] hover:bg-[#8F1220] hover:shadow-lg"
                       >
-                        <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
-                          Calculadora de Mortalidade
+                        <span className="flex items-center justify-center gap-2 p-2 text-sm text-[#8F1220] transition-colors duration-300 group-hover:text-white">
+                          Utilizar Ferramenta
+                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                         </span>
                       </button>
                     </div>
                     <div className="flex w-full flex-col items-center">
-                      <div className="flex w-[80%] items-start">
-                        <h3 className="text-start">
+                      <div className="flex w-[80%] flex-col items-start gap-2">
+                        <h2 className="text-start text-lg font-semibold text-white">
+                          Calculadora de Medicamentos
+                        </h2>
+                        <h3 className="text-start text-white/95">
                           Ferramenta para auxiliar na quantidade de medicamentos
                           com base no tamanho do rebanho e do motivo do
                           tratamento.
@@ -462,10 +469,11 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => router.push("/medication/calculator")}
-                        className="font-regular mt-4 flex w-[80%] items-center justify-center rounded-md border-[#8F1220] bg-white transition-all duration-300 hover:scale-[1.05]"
+                        className="font-regular group mt-4 flex w-[80%] items-center justify-center gap-2 rounded-md border-2 border-[#8F1220] bg-white py-2.5 transition-all duration-300 hover:scale-[1.03] hover:border-[#8F1220] hover:bg-[#8F1220] hover:shadow-lg"
                       >
-                        <span className="flex items-center justify-center bg-gradient-to-r from-[#8F1220] to-black bg-clip-text p-2 text-sm text-[#8F1220]">
-                          Calculadora de Medicamentos
+                        <span className="flex items-center justify-center gap-2 p-2 text-sm text-[#8F1220] transition-colors duration-300 group-hover:text-white">
+                          Utilizar Ferramenta
+                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                         </span>
                       </button>
                     </div>
@@ -840,60 +848,45 @@ export default function Home() {
                   Uma história guiada por compromisso e crescimento.
                 </motion.h3>
 
-                <h3 className="text-md text-start font-semibold"></h3>
-                <div className="z-[60] mb-20 mt-10 flex w-full flex-row justify-between gap-8">
-                  <Swiper
-                    slidesPerView={1.2}
-                    spaceBetween={20}
-                    breakpoints={{
-                      768: {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                      },
-                    }}
-                  >
-                    {slides.map((item) => (
-                      <SwiperSlide key={item.id}>
-                        <motion.button
-                          onClick={() =>
-                            item.videoUrl
-                              ? handleClick(item.videoUrl)
-                              : window.open(
-                                  "https://www.instagram.com/foco.saudeanimal/",
-                                  "_blank",
-                                )
-                          }
-                          initial={{ opacity: 0, y: 50 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.8, delay: 0.3 }}
-                          viewport={{ once: true }}
-                          className="group relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl bg-black/20 bg-white p-2 transition-all duration-300 hover:scale-[2] hover:bg-black/40 lg:h-64 lg:w-64 xl:h-[350px] xl:w-[350px]"
-                        >
-                          <Image
-                            alt=""
-                            width={400}
-                            height={400}
-                            src={item.image}
-                            className="absolute top-0 z-10 h-full w-full object-cover"
-                          />
-                          <div className="z-20 flex h-full w-full flex-col gap-4 rounded-xl bg-black/40 p-4 pb-8 pt-12 transition-all duration-300 hover:bg-black/0 md:pt-16 lg:pt-4">
-                            <div className="h-1/3 w-full md:h-1/2"></div>
-                            <div className="flex h-2/3 w-full items-center md:h-1/2">
-                              <span className="text-start font-semibold text-white transition-all duration-300 group-hover:text-white">
-                                {item.title}
-                              </span>
-                            </div>
-
-                            <div className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border p-2 transition-all duration-300 group-hover:bg-[#DC2626]">
-                              <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
-                                <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
-                              </span>
-                            </div>
-                          </div>
-                        </motion.button>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+                <div className="z-[60] mb-20 mt-10 grid w-full grid-cols-1 gap-6 md:grid-cols-3">
+                  {slides.map((item) => (
+                    <motion.button
+                      key={item.id}
+                      onClick={() =>
+                        item.videoUrl
+                          ? handleClick(item.videoUrl)
+                          : window.open(
+                              "https://www.instagram.com/foco.saudeanimal/",
+                              "_blank",
+                            )
+                      }
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="group relative flex h-full min-h-[280px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#DC2626]/30 bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg lg:min-h-[350px]"
+                    >
+                      <Image
+                        alt=""
+                        width={400}
+                        height={400}
+                        src={item.image}
+                        className="absolute inset-0 z-10 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="relative z-20 flex h-full w-full flex-col justify-end rounded-2xl p-4 pb-6 pt-12 md:p-5 md:pb-8">
+                        <div className="flex-1" />
+                        <span className="text-start text-sm font-semibold leading-snug text-white md:text-base">
+                          {item.title}
+                        </span>
+                      </div>
+                      <div className="absolute right-4 top-4 z-30 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#DC2626] bg-white/90 transition-all duration-300 group-hover:bg-[#DC2626]">
+                        <span className="-rotate-45 transform transition-transform duration-300 group-hover:-rotate-90">
+                          <ArrowRight className="text-[#DC2626] transition-all duration-300 group-hover:text-white" />
+                        </span>
+                      </div>
+                    </motion.button>
+                  ))}
                 </div>
               </div>
             </section>

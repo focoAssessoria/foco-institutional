@@ -1,11 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Política de Privacidade | Foco Consultoria",
+  description:
+    "Política de privacidade do Foco Saúde Animal. Conheça como tratamos suas informações no site e nos serviços.",
+};
 
 export default function Policy() {
   return (
     <div className="flex min-h-screen w-full flex-col gap-2 bg-white p-4 text-black lg:p-8">
       <Image
         src="/logo-red.png"
-        alt=""
+        alt="Logo Foco Saúde Animal"
         width={1000}
         height={400}
         className="mx-auto h-40 object-contain"

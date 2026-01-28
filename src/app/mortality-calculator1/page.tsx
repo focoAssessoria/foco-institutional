@@ -146,7 +146,7 @@ export default function MortalityCalculator() {
         className={`absolute z-50 flex h-full w-full items-center justify-center bg-[#161717] ${enterAnimation ? "opacity-100" : "opacity-0"} ${showAnimation ? "flex" : "hidden"} transition-all duration-300`}
       >
         <Image
-          alt=""
+          alt="Logo Foco Saúde Animal"
           width={500}
           height={500}
           className="absolute top-[400px] h-14 w-[165px] lg:static lg:h-20 lg:w-[250px]"
@@ -182,14 +182,14 @@ export default function MortalityCalculator() {
             )}
 
             <Image
-              alt=""
+              alt="Logo Foco - decoração"
               width={500}
               height={500}
               className="absolute left-0 top-4 z-10 h-20 w-14 opacity-15 lg:h-40 lg:w-28"
               src={"/halfLogo.png"}
             />
             <Image
-              alt=""
+              alt="Padrão decorativo"
               width={500}
               height={500}
               className="absolute bottom-4 right-4 z-10 h-[120px] w-[120px] opacity-15"
@@ -242,7 +242,7 @@ export default function MortalityCalculator() {
                       </p>
                       <div className="flex w-full flex-row gap-4 border-b-2 border-b-[#999999] pb-1">
                         <Image
-                          alt=""
+                          alt="Ícone gado"
                           width={40}
                           height={40}
                           src={"/cowFace.svg"}
@@ -267,7 +267,7 @@ export default function MortalityCalculator() {
                       </p>
                       <div className="flex w-full flex-row gap-4 border-b-2 border-b-[#999999] pb-1">
                         <Image
-                          alt=""
+                          alt="Ícone gado"
                           width={40}
                           height={40}
                           src={"/cowFace.svg"}
@@ -357,7 +357,7 @@ export default function MortalityCalculator() {
               <div className="flex flex-row items-center self-center">
                 <div className="h-8 w-8 overflow-hidden rounded-full border border-[#DC2626]">
                   <Image
-                    alt=""
+                    alt="Usuário que utilizou a calculadora"
                     width={100}
                     height={100}
                     className="h-full w-full"
@@ -366,7 +366,7 @@ export default function MortalityCalculator() {
                 </div>
                 <div className="-ml-3 h-8 w-8 overflow-hidden rounded-full border border-[#DC2626]">
                   <Image
-                    alt=""
+                    alt="Usuária que utilizou a calculadora"
                     width={100}
                     height={100}
                     className="h-full w-full"
@@ -375,7 +375,7 @@ export default function MortalityCalculator() {
                 </div>
                 <div className="-ml-3 h-8 w-8 overflow-hidden rounded-full border border-[#DC2626]">
                   <Image
-                    alt=""
+                    alt="Usuário que utilizou a calculadora"
                     width={100}
                     height={100}
                     className="h-full w-full"
@@ -395,7 +395,7 @@ export default function MortalityCalculator() {
       ) : (
         <div className="relative flex h-full w-full rounded-lg bg-[#161717]">
           <Image
-            alt=""
+            alt="Padrão decorativo"
             width={500}
             height={500}
             className="absolute bottom-4 right-4 z-10 h-[120px] w-[120px] opacity-15"
@@ -404,7 +404,7 @@ export default function MortalityCalculator() {
           <div className="z-20 flex h-full w-full flex-col gap-4 px-4 py-8 lg:px-10 lg:py-12">
             <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-4">
               <Image
-                alt=""
+                alt="Logo Foco Saúde Animal"
                 width={500}
                 height={500}
                 className="h-14 w-[165px] lg:h-20 lg:w-[250px]"
@@ -474,7 +474,7 @@ export default function MortalityCalculator() {
                         </p>
                         <div className="flex w-full flex-row gap-4 border-b-2 border-b-[#999999] pb-1">
                           <Image
-                            alt=""
+                            alt="Ícone vaca"
                             width={40}
                             height={40}
                             src={"/vaca.svg"}

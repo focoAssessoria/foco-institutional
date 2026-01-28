@@ -1,9 +1,21 @@
 "use client";
-import { Menu } from "lucide-react";
+import {
+  Bot,
+  Calculator,
+  History,
+  LayoutGrid,
+  Menu,
+  Pill,
+  Smartphone,
+} from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
+
+const navItemClass =
+  "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-white/90 transition-all duration-300 ease-out hover:bg-[#DC2626]/20 hover:text-white hover:scale-[1.02]";
 
 interface HeaderProps {
   mobile?: boolean;
@@ -11,7 +23,10 @@ interface HeaderProps {
 
 export function Header({ mobile }: HeaderProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const isHome = pathname === "/";
+
   useEffect(() => {
     if (isSidebarOpen) {
       document.body.classList.add("modal-open");
@@ -21,6 +36,7 @@ export function Header({ mobile }: HeaderProps) {
 
     return () => document.body.classList.remove("modal-open");
   }, [isSidebarOpen]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -33,54 +49,90 @@ export function Header({ mobile }: HeaderProps) {
       element.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   };
+
+  const handleNav = (action: () => void) => {
+    if (mobile) setIsSidebarOpen(false);
+    action();
+  };
+
   return (
     <>
       <div
         className={twMerge(
-          "sticky top-2 z-[9999] mx-auto flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 p-2 text-white",
+          "sticky top-2 z-[9999] mx-auto flex w-[80%] items-center justify-between self-center rounded-lg bg-[#0A0A0A]/90 backdrop-blur-sm p-2 text-white",
           mobile && "w-11/12 lg:hidden",
         )}
       >
-        <Image
-          className="h-8 w-max object-contain lg:hidden"
-          alt=""
-          width={500}
-          height={500}
-          src="/4.png"
-        />
+        <Link href="/" className="lg:hidden">
+          <Image
+            className="h-8 w-max object-contain"
+            alt="Logo Foco Saúde Animal"
+            width={500}
+            height={500}
+            src="/4.png"
+          />
+        </Link>
         <button
-          className="lg:hidden"
+          className="rounded-lg p-2 transition-colors duration-200 hover:bg-white/10 lg:hidden"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          aria-label="Menu"
         >
-          <Menu />
+          <Menu className="h-6 w-6" />
         </button>
         <div className="hidden w-full flex-row items-center justify-evenly lg:flex">
           <button
-            onClick={() => router.push("/mortality/calculator")}
-            className="text-sm"
+            onClick={() => handleNav(() => router.push("/mortality/calculator"))}
+            className={navItemClass}
           >
-            Calculadora de Mortalidade
+            <Calculator className="h-4 w-4 shrink-0 opacity-80" />
+            Calc. de Mortalidade
           </button>
           <button
-            onClick={() => router.push("/medication/calculator")}
-            className="text-sm"
+            onClick={() =>
+              handleNav(() => router.push("/medication/calculator"))
+            }
+            className={navItemClass}
           >
-            Calculadora de Medicamentos
+            <Pill className="h-4 w-4 shrink-0 opacity-80" />
+            Calc. de Medicamentos
           </button>
           <button
-            className="text-sm"
-            onClick={() => scrollToSection("service")}
+            className={navItemClass}
+            onClick={() =>
+              handleNav(() =>
+                isHome ? scrollToSection("service") : router.push("/#service"),
+              )
+            }
           >
-            Serviços
+            <LayoutGrid className="h-4 w-4 shrink-0 opacity-80" />
+            Soluções
           </button>
           <button
-            onClick={() => scrollToSection("history")}
-            className="text-sm"
+            onClick={() =>
+              handleNav(() =>
+                isHome ? scrollToSection("history") : router.push("/#history"),
+              )
+            }
+            className={navItemClass}
           >
+            <History className="h-4 w-4 shrink-0 opacity-80" />
             História
           </button>
-          <button onClick={() => scrollToSection("ai")} className="text-sm">
+          <button
+            onClick={() =>
+              handleNav(() => router.push("/inteligencia-artificial"))
+            }
+            className={navItemClass}
+          >
+            <Bot className="h-4 w-4 shrink-0 opacity-80" />
             Inteligência Artificial
+          </button>
+          <button
+            onClick={() => handleNav(() => router.push("/aplicativo"))}
+            className={navItemClass}
+          >
+            <Smartphone className="h-4 w-4 shrink-0 opacity-80" />
+            Aplicativo
           </button>
         </div>
         <div className="hidden w-2/5 flex-row items-center justify-end gap-4 lg:flex">
@@ -109,34 +161,69 @@ export function Header({ mobile }: HeaderProps) {
         )}
       >
         <div className="left-0 top-0 z-[10000] flex h-screen max-w-[350px] flex-col gap-8 bg-[#9a2626] p-4 pt-12">
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={1000}
-            height={1000}
-            className="h-max w-80 object-contain"
-          />
-          <div className="flex w-full flex-col items-start gap-2 text-start">
+          <Link href="/" onClick={() => setIsSidebarOpen(false)}>
+            <Image
+              src="/logo.png"
+              alt="Logo Foco Saúde Animal"
+              width={1000}
+              height={1000}
+              className="h-max w-80 object-contain transition-opacity duration-200 hover:opacity-90"
+            />
+          </Link>
+          <div className="flex w-full flex-col items-stretch gap-1 text-start">
             <button
-              onClick={() => scrollToBottom("calculator")}
-              className="text-sm"
+              onClick={() => handleNav(() => router.push("/mortality/calculator"))}
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
             >
-              Calculadora de Lucro
+              <Calculator className="h-4 w-4 shrink-0 opacity-90" />
+              Calc. de Mortalidade
             </button>
             <button
-              onClick={() => scrollToSection("service")}
-              className="text-sm"
+              onClick={() =>
+                handleNav(() => router.push("/medication/calculator"))
+              }
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
             >
-              Serviços
+              <Pill className="h-4 w-4 shrink-0 opacity-90" />
+              Calc. de Medicamentos
             </button>
             <button
-              onClick={() => scrollToSection("history")}
-              className="text-sm"
+              onClick={() =>
+                handleNav(() =>
+                  isHome ? scrollToSection("service") : router.push("/#service"),
+                )
+              }
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
             >
+              <LayoutGrid className="h-4 w-4 shrink-0 opacity-90" />
+              Soluções
+            </button>
+            <button
+              onClick={() =>
+                handleNav(() =>
+                  isHome ? scrollToSection("history") : router.push("/#history"),
+                )
+              }
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
+            >
+              <History className="h-4 w-4 shrink-0 opacity-90" />
               História
             </button>
-            <button onClick={() => scrollToSection("ai")} className="text-sm">
+            <button
+              onClick={() =>
+                handleNav(() => router.push("/inteligencia-artificial"))
+              }
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
+            >
+              <Bot className="h-4 w-4 shrink-0 opacity-90" />
               Inteligência Artificial
+            </button>
+            <button
+              onClick={() => handleNav(() => router.push("/aplicativo"))}
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-white transition-colors duration-200 hover:bg-white/15"
+            >
+              <Smartphone className="h-4 w-4 shrink-0 opacity-90" />
+              Aplicativo
             </button>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-4">

@@ -26,7 +26,7 @@ export function MedicationCalculator({
               Calculadora de Medicamentos
             </h3>
             <Image
-              alt=""
+              alt="QR Code ou link para Calculadora de Medicamentos"
               width={1000}
               height={1000}
               src={"/shortly.png"}

@@ -28,7 +28,7 @@ export default function Calculator() {
       >
         <Image
           className="h-max w-60 object-contain"
-          alt=""
+          alt="Logo Foco Saúde Animal"
           width={500}
           height={500}
           src="/fullLogoWhite.png"

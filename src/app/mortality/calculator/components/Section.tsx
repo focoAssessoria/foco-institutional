@@ -94,7 +94,7 @@ export function Section() {
             >
               <Image
                 src="/logo-badge.png"
-                alt=""
+                alt="Logo Foco Saúde Animal"
                 width={1000}
                 height={1000}
                 className="shadow-primary h-10 w-10 rounded-full shadow-lg xl:h-32 xl:w-32"
@@ -142,7 +142,7 @@ export function Section() {
                         </div>
                         <Image
                           src="/logo-badge.png"
-                          alt=""
+                          alt="Avatar usuário"
                           width={250}
                           height={250}
                           className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
@@ -152,7 +152,7 @@ export function Section() {
                       <div className="flex justify-start gap-2 text-start">
                         <Image
                           src="/logo-badge.png"
-                          alt=""
+                          alt="Avatar assistente"
                           width={250}
                           height={250}
                           className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
