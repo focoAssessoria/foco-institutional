@@ -26,7 +26,7 @@
     "lenis": "^1.1.19",
     "lucide-react": "^0.454.0",
     "moment": "^2.30.1",
-    "next": "15.0.2",
+    "next": "^16.1.6",
     "next-client-cookies": "^2.0.0",
     "next-video": "^1.4.0",
     "npm": "^10.9.2",
