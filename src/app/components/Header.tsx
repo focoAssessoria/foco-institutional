@@ -43,12 +43,6 @@ export function Header({ mobile }: HeaderProps) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const scrollToBottom = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-  };
 
   const handleNav = (action: () => void) => {
     if (mobile) setIsSidebarOpen(false);

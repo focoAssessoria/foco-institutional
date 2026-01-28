@@ -74,7 +74,7 @@ export default function MortalityCalculator() {
     setPhoneNumber(savedPhoneNumber);
     setCurrentDay(moment().diff(moment().startOf("year"), "days"));
     setIsLeapYear(moment().isLeapYear());
-  }, []);
+  }, [cookies]);
 
   useEffect(() => {
     if (dayOneStock) {

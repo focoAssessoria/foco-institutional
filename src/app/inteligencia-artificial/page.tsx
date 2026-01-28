@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/Header";
+import { motion } from "framer-motion";
 import {
   Bot,
   Cpu,
@@ -13,7 +14,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -247,7 +247,7 @@ export default function InteligenciaArtificialPage() {
               { icon: MessageCircle, title: "Integração", desc: "Sistemas e APIs" },
               { icon: Shield, title: "Sanidade", desc: "Alertas e prevenção" },
               { icon: Sparkles, title: "Evolução", desc: "Modelos em constante melhoria" },
-            ].map((item, i) => (
+            ].map((item) => (
               <motion.div
                 key={item.title}
                 variants={fadeUp}

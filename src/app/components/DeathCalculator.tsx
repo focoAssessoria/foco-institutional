@@ -62,6 +62,8 @@ export function DeathCalculator({
     injuredAmount,
     cattlePerDayOfYear,
     currentCattlePerDayOfYear,
+    currentDay,
+    isLeapYear,
   ]);
 
   return (
