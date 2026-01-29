@@ -132,7 +132,7 @@ export function Section() {
                 "absolute left-1/2 z-10 flex -translate-x-1/2 flex-col items-center justify-center gap-4 transition duration-1000",
                 isClicked
                   ? "-translate-y-5 2xl:-translate-y-[40%]"
-                  : "translate-y-1/2",
+                  : "translate-y-1/3",
               )}
             >
               <Image
@@ -144,12 +144,12 @@ export function Section() {
               />
               <div
                 className={cn(
-                  "flex flex-col items-center gap-2 transition duration-500",
+                  "flex w-full flex-col items-center gap-2 transition duration-500",
                   isClicked ? "opacity-0" : "opacity-100",
                 )}
               >
-                <span className="text-center text-base font-bold text-white xl:text-4xl">
-                  SAIBA A REAsss      L
+                <span className="w-max text-center text-base font-bold text-white xl:text-4xl">
+                  SAIBA A REAL
                   <span className="text-[#DC2626]">
                     {""} TAXA DE <br />
                     MORTALIDADE
