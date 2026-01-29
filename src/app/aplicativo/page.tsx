@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/Header";
+import { motion } from "framer-motion";
 import {
   CheckCircle2,
   Download,
@@ -10,7 +11,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -165,22 +165,14 @@ export default function AplicativoPage() {
               {...fadeUp}
               className="flex justify-center"
             >
-              <div className="relative">
-                <div className="rounded-[2.5rem] border-[10px] border-zinc-700 bg-zinc-900 p-2 shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.02]">
-                  <div className="h-[500px] w-[260px] overflow-hidden rounded-[1.5rem] bg-zinc-800/80 sm:w-[280px]">
-                    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-6 text-center">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#DC2626]/20">
-                        <Smartphone className="h-8 w-8 text-[#DC2626]" />
-                      </div>
-                      <p className="text-sm font-medium text-zinc-400">
-                        Mockup do celular
-                      </p>
-                      <p className="text-xs text-zinc-500">
-                        Placeholder para print do app
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="relative w-full max-w-2xl">
+                <Image
+                  src="/mobile/mock.png"
+                  alt="Mockup do aplicativo Foco Saúde Animal"
+                  width={1000}
+                  height={1400}
+                  className="w-full h-auto rounded-2xl shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.02]"
+                />
               </div>
             </motion.div>
           </motion.div>
@@ -198,20 +190,59 @@ export default function AplicativoPage() {
             Imagens e vídeos do aplicativo
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {/* Vídeo 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 * 0.06, duration: 0.4 }}
+              className="group aspect-video overflow-hidden rounded-2xl border-2 border-zinc-700 bg-zinc-900/50 transition-all duration-300 ease-out hover:border-[#DC2626]/50"
+            >
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              >
+                <source src="/mobile/video1.mp4" type="video/mp4" />
+              </video>
+            </motion.div>
+            {/* Vídeo 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1 * 0.06, duration: 0.4 }}
+              className="group aspect-video overflow-hidden rounded-2xl border-2 border-zinc-700 bg-zinc-900/50 transition-all duration-300 ease-out hover:border-[#DC2626]/50"
+            >
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              >
+                <source src="/mobile/video2.mp4" type="video/mp4" />
+              </video>
+            </motion.div>
+            {/* Imagens */}
+            {["2", "3", "4", "5"].map((num, i) => (
               <motion.div
-                key={i}
+                key={num}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="group aspect-video overflow-hidden rounded-2xl border-2 border-dashed border-zinc-700 bg-zinc-900/50 transition-all duration-300 ease-out hover:border-[#DC2626]/50"
+                transition={{ delay: (i + 2) * 0.06, duration: 0.4 }}
+                className="group aspect-video overflow-hidden rounded-2xl border-2 border-zinc-700 bg-zinc-900/50 transition-all duration-300 ease-out hover:border-[#DC2626]/50"
               >
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="text-sm text-zinc-500 group-hover:text-zinc-400">
-                    Imagem / vídeo {i}
-                  </span>
-                </div>
+                <Image
+                  src={`/mobile/${num}.png`}
+                  alt={`Screenshot do aplicativo ${num}`}
+                  width={600}
+                  height={400}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </motion.div>
             ))}
           </div>
