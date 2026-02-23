@@ -1,7 +1,7 @@
 "use client";
 import { ScrollArea } from "@/app/components/scroll-area";
 import { cn } from "@/app/utils/utils";
-import { Mic, Send, Square, X } from "lucide-react";
+import { ImageIcon, FileText, Mic, Send, Square, X } from "lucide-react";
 import Image from "next/image";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -88,272 +88,297 @@ export function Section() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileData]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setMessages([
-  //       {
-  //         role: "assistant",
-  //         content: "Olá, como posso ajudar?",
-  //       },
-  //     ]);
-  //     setIsClicked(true);
-  //   }, 5000);
-  // }, []);
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth", // ou "smooth", se preferir animado
-      block: "end", // <-- garante que ficará colado embaixo
+      behavior: "smooth",
+      block: "end",
       inline: "nearest",
     });
   }, [messages]);
 
   return (
-    <div className="h-[calc(100vh-80px)] w-full bg-[#171717] p-2 2xl:h-[calc(100vh-112px)] 2xl:p-8">
-      <div className="relative flex h-full w-full flex-col items-center justify-between gap-2 overflow-hidden rounded-lg border border-[#DC2626] bg-[url('/calculator-bg.png')] bg-cover bg-center bg-no-repeat p-2 lg:flex-row lg:gap-4 lg:p-4 xl:p-8 2xl:gap-20 2xl:p-20">
-        <div className="absolute left-0 top-0 z-50 h-full w-full bg-black/80" />
-        <div className="z-[60] h-2/5 w-full rounded-lg lg:h-full lg:w-[400px] 2xl:w-[600px] 3xl:w-[800px]">
+    <div className="flex h-[calc(100vh-56px)] w-full flex-col bg-[#0a0a0a] md:h-[calc(100vh-64px)] xl:h-[calc(100vh-72px)]">
+      {/* Main Content */}
+      <div className="flex flex-1 flex-col gap-3 overflow-hidden p-3 lg:flex-row lg:gap-4 lg:p-4 xl:gap-6 xl:p-6">
+        {/* Video Section */}
+        <div className="h-[200px] w-full flex-shrink-0 overflow-hidden rounded-2xl border border-white/5 shadow-2xl shadow-black/50 sm:h-[240px] lg:h-full lg:w-[360px] xl:w-[440px] 2xl:w-[560px]">
           <iframe
             width="100%"
             height="100%"
-            className="h-full w-full rounded-lg"
-            src="https://www.youtube.com/embed/O5N109bOH0E?si=53uDW-eOddbw_TEg"
+            className="h-full w-full"
+            src="https://www.youtube.com/embed/O5N109bOH0E?si=53uDW-eOddbw_TEg&autoplay=1&mute=1"
             title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>
-        <div className="z-[60] flex h-full w-full flex-1 flex-col justify-end rounded-lg border border-zinc-500 p-2 2xl:p-8">
-          <div className="relative flex h-full w-full flex-col">
-            <div
-              className={cn(
-                "absolute left-1/2 z-10 flex -translate-x-1/2 flex-col items-center justify-center gap-4 transition duration-1000",
-                isClicked
-                  ? "-translate-y-5 2xl:-translate-y-[40%]"
-                  : "translate-y-1/3",
-              )}
-            >
+
+        {/* Chat Section */}
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111111]">
+          {/* Chat Header */}
+          <div className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3 xl:px-6 xl:py-4">
+            <div className="relative">
               <Image
                 src="/logo-badge.png"
                 alt="Logo Foco Saúde Animal"
-                width={1000}
-                height={1000}
-                className="shadow-primary h-10 w-10 rounded-full shadow-lg lg:h-14 lg:w-14 2xl:h-32 2xl:w-32"
+                width={200}
+                height={200}
+                className="h-8 w-8 rounded-full ring-2 ring-[#DC2626]/30 xl:h-10 xl:w-10"
               />
-              <div
-                className={cn(
-                  "flex w-full flex-col items-center gap-2 transition duration-500",
-                  isClicked ? "opacity-0" : "opacity-100",
-                )}
-              >
-                <span className="w-max text-center text-base font-bold text-white xl:text-4xl">
-                  SAIBA A REAL
-                  <span className="text-[#DC2626]">
-                    {""} TAXA DE <br />
-                    MORTALIDADE
-                  </span>
-                  {""} DA SUA FAZENDA
-                </span>
-                <span className="text-xs font-bold text-white xl:text-2xl">
-                  UTILIZANDO IA DssO FOCO SAÚDE ANIMAL{" "}
-                </span>
-              </div>
+              <div className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#111111] bg-emerald-500" />
             </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-white xl:text-base">
+                Calculadora de Mortalidade
+              </span>
+              <span className="text-[11px] text-zinc-500 xl:text-xs">
+                IA Foco Saúde Animal • Online
+              </span>
+            </div>
+          </div>
+
+          {/* Messages Area */}
+          <div className="relative flex-1 overflow-hidden">
+            {/* Welcome State */}
             <div
               className={cn(
-                "absolute left-0 top-0 h-full w-full transition delay-500 duration-300",
-                isClicked ? "opacity-100" : "opacity-0",
+                "absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-6 transition-all duration-700",
+                isClicked
+                  ? "pointer-events-none scale-95 opacity-0"
+                  : "opacity-100",
               )}
             >
-              <ScrollArea className="h-full w-full pb-2 pt-5 xl:pt-0">
-                {messages.map((message, index) => (
-                  <div
-                    key={index}
-                    className={cn(
-                      "my-2 flex w-full gap-2",
-                      message.role === "user" ? "justify-end" : "justify-start",
-                    )}
-                  >
-                    {message.role === "user" ? (
-                      <div className="flex max-w-[80%] justify-end gap-2 rounded-lg bg-zinc-800/60 p-1 text-end">
-                        <div className="flex flex-col text-white">
-                          <span className="mb-2 ml-auto w-max text-[10px] font-semibold 2xl:text-lg">
-                            Eu
-                          </span>
-                          {message.type?.includes("image") ? (
-                            <>
-                              <Image
-                                src={message.file as string}
-                                alt="Imagem enviada pelo usuário"
-                                width={2500}
-                                height={2500}
-                                className="h-40 w-auto rounded-md"
-                              />
-                              <div className="h-5 w-5" />
-                            </>
-                          ) : message.type?.includes("audio") ? (
-                            <div className="flex p-2">
-                              <AudioPlayer
-                                className="ai z-[9999] flex-1"
-                                size="default"
-                                audioUrl={message.file as string}
-                              />
-                            </div>
-                          ) : message.type?.includes("video") ? (
-                            <video
-                              src={message.file as string}
-                              controls
-                              className="h-60 rounded-md"
-                            />
-                          ) : message.type?.includes("pdf") ? (
-                            <a
-                              href={message.file as string}
-                              download
-                              className="flex flex-col items-center gap-1"
-                            >
-                              <Image
-                                src={"/pdf3.svg"}
-                                alt="Documento PDF"
-                                width={100}
-                                height={100}
-                                className="h-12 w-12"
-                              />
-                              <span>{message.name}</span>
-                            </a>
-                          ) : (
-                            <span className="text-xs xl:text-base">
-                              {message.content}
+              <div className="flex flex-col items-center gap-3">
+                <Image
+                  src="/logo-badge.png"
+                  alt="Logo Foco Saúde Animal"
+                  width={1000}
+                  height={1000}
+                  className="h-16 w-16 rounded-full shadow-xl shadow-[#DC2626]/20 ring-2 ring-[#DC2626]/20 lg:h-20 lg:w-20 xl:h-24 xl:w-24"
+                />
+                <div className="flex flex-col items-center gap-1.5 text-center">
+                  <h2 className="text-lg font-bold leading-tight text-white lg:text-xl xl:text-2xl">
+                    Saiba a real{" "}
+                    <span className="text-[#DC2626]">taxa de mortalidade</span>
+                    <br />
+                    da sua fazenda
+                  </h2>
+                  <p className="max-w-sm text-xs text-zinc-500 lg:text-sm">
+                    Utilize nossa IA para calcular os índices de mortalidade do
+                    seu rebanho de forma rápida e precisa.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setIsClicked(true);
+                  sendMessage("Olá");
+                }}
+                className="mt-2 rounded-full bg-[#DC2626] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-900/30 transition-all hover:bg-[#ef4444] hover:shadow-red-900/50 active:scale-95"
+              >
+                Iniciar conversa
+              </button>
+            </div>
+
+            {/* Chat Messages */}
+            <div
+              className={cn(
+                "absolute inset-0 transition-all delay-200 duration-500",
+                isClicked ? "opacity-100" : "pointer-events-none opacity-0",
+              )}
+            >
+              <ScrollArea className="h-full w-full">
+                <div className="flex flex-col gap-3 p-4 xl:gap-4 xl:p-6">
+                  {messages.map((message, index) => (
+                    <div
+                      key={index}
+                      className={cn(
+                        "flex w-full gap-2.5",
+                        message.role === "user"
+                          ? "justify-end"
+                          : "justify-start",
+                      )}
+                    >
+                      {/* Assistant Message */}
+                      {message.role === "assistant" && (
+                        <div className="flex max-w-[85%] gap-2.5 lg:max-w-[75%]">
+                          <Image
+                            src="/logo-badge.png"
+                            alt="Avatar assistente"
+                            width={250}
+                            height={250}
+                            className="mt-0.5 h-7 w-7 flex-shrink-0 rounded-full xl:h-8 xl:w-8"
+                          />
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[11px] font-medium text-zinc-500 xl:text-xs">
+                              Calculadora Foco
                             </span>
-                          )}
-                        </div>
-                        <Image
-                          src="/logo-badge.png"
-                          alt="Avatar usuário"
-                          width={250}
-                          height={250}
-                          className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
-                        />
-                      </div>
-                    ) : (
-                      <div className="flex max-w-[80%] justify-start gap-2 rounded-lg bg-[#DC2626]/20 p-1 text-start">
-                        <Image
-                          src="/logo-badge.png"
-                          alt="Avatar assistente"
-                          width={250}
-                          height={250}
-                          className="h-6 w-6 rounded-full xl:h-10 xl:w-10"
-                        />
-                        <div className="flex flex-col text-[10px] text-white 2xl:text-lg">
-                          <span className="mb-2 mr-auto w-max font-semibold">
-                            Calculadora Foco
-                          </span>
-                          {message.content === "..." ? (
-                            <div className="mt-2 flex items-center justify-center space-x-2">
-                              <span className="sr-only">...</span>
-                              <div className="border-primary h-2 w-2 animate-bounce rounded-full border bg-black [animation-delay:-0.3s]"></div>
-                              <div className="border-primary h-2 w-2 animate-bounce rounded-full border bg-black [animation-delay:-0.15s]"></div>
-                              <div className="border-primary h-2 w-2 animate-bounce rounded-full border bg-black"></div>
+                            <div className="rounded-2xl rounded-tl-md bg-white/[0.05] px-3.5 py-2.5 xl:px-4 xl:py-3">
+                              {message.content === "..." ? (
+                                <div className="flex items-center gap-1.5 py-1">
+                                  <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626]/70 [animation-delay:-0.3s]" />
+                                  <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626]/70 [animation-delay:-0.15s]" />
+                                  <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626]/70" />
+                                </div>
+                              ) : (
+                                <div className="prose prose-invert prose-sm max-w-none text-xs leading-relaxed text-zinc-300 xl:text-sm [&_table]:text-xs [&_th]:text-left [&_th]:font-semibold [&_td]:py-1 [&_th]:py-1">
+                                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    {message.content}
+                                  </ReactMarkdown>
+                                </div>
+                              )}
                             </div>
-                          ) : (
-                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                              {message.content}
-                            </ReactMarkdown>
-                          )}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <div ref={messagesEndRef} />
+                      )}
+
+                      {/* User Message */}
+                      {message.role === "user" && (
+                        <div className="flex max-w-[85%] gap-2.5 lg:max-w-[75%]">
+                          <div className="flex flex-col items-end gap-1">
+                            <span className="text-[11px] font-medium text-zinc-500 xl:text-xs">
+                              Você
+                            </span>
+                            <div className="rounded-2xl rounded-tr-md bg-[#DC2626]/15 px-3.5 py-2.5 xl:px-4 xl:py-3">
+                              {message.type?.includes("image") ? (
+                                <Image
+                                  src={message.file as string}
+                                  alt="Imagem enviada pelo usuário"
+                                  width={2500}
+                                  height={2500}
+                                  className="max-h-48 w-auto rounded-lg"
+                                />
+                              ) : message.type?.includes("audio") ? (
+                                <AudioPlayer
+                                  className="ai z-[9999] flex-1"
+                                  size="default"
+                                  audioUrl={message.file as string}
+                                />
+                              ) : message.type?.includes("video") ? (
+                                <video
+                                  src={message.file as string}
+                                  controls
+                                  className="max-h-60 rounded-lg"
+                                />
+                              ) : message.type?.includes("pdf") ? (
+                                <a
+                                  href={message.file as string}
+                                  download
+                                  className="flex items-center gap-2 text-white transition-colors hover:text-[#DC2626]"
+                                >
+                                  <Image
+                                    src={"/pdf3.svg"}
+                                    alt="Documento PDF"
+                                    width={100}
+                                    height={100}
+                                    className="h-8 w-8"
+                                  />
+                                  <span className="text-xs xl:text-sm">
+                                    {message.name}
+                                  </span>
+                                </a>
+                              ) : (
+                                <span className="text-xs text-zinc-200 xl:text-sm">
+                                  {message.content}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <div ref={messagesEndRef} />
+                </div>
               </ScrollArea>
             </div>
           </div>
-          <div className="flex w-full flex-row items-center gap-1">
-            <div className="flex flex-row items-center gap-1">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button className="relative flex h-6 w-6 items-center justify-center overflow-hidden rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
-                      <Image
-                        src={"/pdf3.svg"}
-                        alt="Anexar PDF"
-                        width={100}
-                        height={100}
-                        className="h-full w-full"
-                      />
-                      <input
-                        className="absolute left-0 top-0 z-[2] h-full w-full opacity-0"
-                        type="file"
-                        accept="application/pdf*"
-                        onChange={(e) => handleFileUpload(e)}
-                        disabled={loading || !!fileData}
-                      />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="top"
-                    align="start"
-                    className="border-primary border bg-black"
-                  >
-                    <p className="text-white">PDF</p>
-                    <TooltipArrow className="fill-primary" />
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button className="relative flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-500 p-0.5 2xl:h-11 2xl:w-11">
-                      <Image
-                        src={"/photo3.svg"}
-                        alt="Anexar imagem ou vídeo"
-                        width={100}
-                        height={100}
-                        className="h-full w-full"
-                      />
-                      <input
-                        className="iz-[2] absolute left-0 top-0 h-full w-full rounded-full opacity-0"
-                        type="file"
-                        accept="image/*,video/*"
-                        onChange={(e) => handleFileUpload(e)}
-                        disabled={loading || !!fileData}
-                      />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="top"
-                    align="start"
-                    className="border-primary border bg-black"
-                  >
-                    <p className="text-white">Imagem ou video</p>
-                    <TooltipArrow className="fill-primary" />
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
 
-            <label
-              onClick={() => setIsClicked(true)}
-              className="flex h-6 flex-1 items-center overflow-hidden rounded-lg border border-zinc-500 pl-2 2xl:h-11 2xl:pl-4 2xl:pr-2"
-            >
-              {fileData && fileData.mimeType.startsWith("audio/") ? (
-                <>
-                  <AudioPlayer
-                    className="ai flex-1"
-                    size="default"
-                    audioUrl={fileData.dataUrl}
-                  />
-                  <button onClick={() => clearFileData()}>
-                    <X className="h-4 text-red-500 2xl:h-8" />
-                  </button>
-                </>
-              ) : (
-                <div className="flex flex-1 flex-row items-center gap-1">
+          {/* Input Area */}
+          <div className="border-t border-white/[0.06] px-3 py-3 xl:px-5 xl:py-4">
+            {/* Audio preview */}
+            {fileData && fileData.mimeType.startsWith("audio/") && (
+              <div className="mb-2.5 flex items-center gap-2 rounded-xl bg-white/[0.04] px-3 py-2">
+                <AudioPlayer
+                  className="ai flex-1"
+                  size="default"
+                  audioUrl={fileData.dataUrl}
+                />
+                <button
+                  onClick={() => clearFileData()}
+                  className="rounded-full p-1 transition-colors hover:bg-white/10"
+                >
+                  <X className="h-4 w-4 text-zinc-400 hover:text-red-400" />
+                </button>
+              </div>
+            )}
+
+            <div className="flex items-center gap-2">
+              {/* Attachment Buttons */}
+              <div className="flex items-center gap-1">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button className="relative flex h-8 w-8 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-white/15 hover:bg-white/[0.06] xl:h-9 xl:w-9">
+                        <FileText className="h-3.5 w-3.5 text-zinc-400 xl:h-4 xl:w-4" />
+                        <input
+                          className="absolute inset-0 z-[2] cursor-pointer opacity-0"
+                          type="file"
+                          accept="application/pdf*"
+                          onChange={(e) => handleFileUpload(e)}
+                          disabled={loading || !!fileData}
+                        />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      align="start"
+                      className="border-zinc-700 bg-zinc-900"
+                    >
+                      <p className="text-xs text-white">Enviar PDF</p>
+                      <TooltipArrow className="fill-zinc-900" />
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button className="relative flex h-8 w-8 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-white/15 hover:bg-white/[0.06] xl:h-9 xl:w-9">
+                        <ImageIcon className="h-3.5 w-3.5 text-zinc-400 xl:h-4 xl:w-4" />
+                        <input
+                          className="absolute inset-0 z-[2] cursor-pointer opacity-0"
+                          type="file"
+                          accept="image/*,video/*"
+                          onChange={(e) => handleFileUpload(e)}
+                          disabled={loading || !!fileData}
+                        />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      align="start"
+                      className="border-zinc-700 bg-zinc-900"
+                    >
+                      <p className="text-xs text-white">Imagem ou vídeo</p>
+                      <TooltipArrow className="fill-zinc-900" />
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+
+              {/* Text Input */}
+              <div
+                onClick={() => setIsClicked(true)}
+                className="flex flex-1 items-center rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 transition-all focus-within:border-[#DC2626]/40 focus-within:bg-white/[0.04] hover:border-white/10 xl:px-4"
+              >
+                {!(fileData && fileData.mimeType.startsWith("audio/")) && (
                   <input
-                    className="flex-1 border-none bg-transparent text-[10px] text-white outline-none placeholder:text-zinc-500 focus:outline-none 2xl:text-base"
-                    placeholder="Digite aqui..."
+                    className="h-9 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-600 xl:h-10 xl:text-base"
+                    placeholder="Digite sua mensagem..."
                     disabled={isRecording || loading}
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
@@ -365,32 +390,52 @@ export function Section() {
                       }
                     }}
                   />
-                </div>
-              )}
+                )}
+              </div>
 
+              {/* Voice / Send Button */}
               <button
-                className="flex h-full w-max items-center gap-2 text-white"
+                className={cn(
+                  "flex h-9 items-center justify-center gap-1.5 rounded-xl px-3 text-sm font-medium transition-all active:scale-95 xl:h-10 xl:px-4",
+                  fileData?.mimeType.startsWith("audio/")
+                    ? "bg-[#DC2626] text-white hover:bg-[#ef4444]"
+                    : isRecording
+                      ? "bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                      : inputMessage.trim()
+                        ? "bg-[#DC2626] text-white hover:bg-[#ef4444]"
+                        : "bg-white/[0.05] text-zinc-400 hover:bg-white/[0.08] hover:text-white",
+                )}
                 disabled={loading}
                 onClick={() => {
                   if (fileData?.mimeType.startsWith("audio/")) {
                     handleSendFile();
                   } else if (isRecording) {
                     stopRecording();
+                  } else if (inputMessage.trim()) {
+                    setIsClicked(true);
+                    sendMessage(inputMessage);
+                    setInputMessage("");
                   } else {
                     startRecording();
                   }
                 }}
               >
-                {isRecording && elapsedTime}
+                {isRecording && (
+                  <span className="text-xs font-mono tabular-nums">
+                    {elapsedTime}
+                  </span>
+                )}
                 {fileData?.mimeType.startsWith("audio/") ? (
-                  <Send className="h-4 text-zinc-500 2xl:h-8" />
+                  <Send className="h-4 w-4" />
                 ) : isRecording ? (
-                  <Square className="h-4 text-zinc-500 2xl:h-8" />
+                  <Square className="h-3.5 w-3.5" />
+                ) : inputMessage.trim() ? (
+                  <Send className="h-4 w-4" />
                 ) : (
-                  <Mic className="h-4 text-zinc-500 2xl:h-8" />
+                  <Mic className="h-4 w-4" />
                 )}
               </button>
-            </label>
+            </div>
           </div>
         </div>
       </div>

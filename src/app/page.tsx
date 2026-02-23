@@ -367,7 +367,7 @@ export default function Home() {
 
                 <motion.div
                   style={{ scale, y: yPosition }}
-                  className="-bottom-20 z-[80] hidden h-[440px] w-[80%] flex-col overflow-hidden rounded-3xl lg:absolute lg:flex lg:flex-row"
+                  className="-bottom-20 z-[80] hidden h-[max(440px,27vh)] w-[80%] flex-col overflow-hidden rounded-3xl lg:absolute lg:flex lg:flex-row"
                 >
                   <motion.div
                     style={{ opacity }}

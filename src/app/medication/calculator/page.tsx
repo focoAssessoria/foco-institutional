@@ -18,25 +18,29 @@ export default function Calculator() {
   }, []);
 
   return (
-    <>
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-[#0a0a0a]">
       <div
         className={cn(
-          `fixed z-[999] flex h-screen w-full flex-col items-center justify-center gap-4 bg-black transition duration-500 ease-in-out`,
-          !showImage && "opacity-5",
+          `fixed z-[999] flex h-screen w-full flex-col items-center justify-center gap-4 bg-[#0a0a0a] transition duration-500 ease-in-out`,
+          !showImage && "opacity-0",
           zDelay && "-z-50",
         )}
       >
         <Image
-          className="h-max w-60 object-contain"
+          className="h-max w-48 object-contain xl:w-60"
           alt="Logo Foco Saúde Animal"
           width={500}
           height={500}
           src="/fullLogoWhite.png"
         />
-        <p className="text-white">Carregando...</p>
+        <div className="flex items-center gap-2">
+          <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626] [animation-delay:-0.3s]" />
+          <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626] [animation-delay:-0.15s]" />
+          <div className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#DC2626]" />
+        </div>
       </div>
       <Header />
       <Section />
-    </>
+    </div>
   );
 }

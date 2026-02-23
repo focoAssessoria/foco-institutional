@@ -7,23 +7,28 @@ export function Header() {
   const router = useRouter();
 
   return (
-    <div className="relative flex h-16 w-full items-center justify-between border-b border-b-zinc-200 bg-[#171717] px-4 xl:h-20 2xl:h-28 2xl:px-8">
+    <header className="relative flex h-14 w-full items-center justify-between bg-[#0f0f0f] px-4 shadow-lg shadow-black/30 md:h-16 xl:h-[72px] xl:px-8">
+      {/* Left - Back button */}
       <div
         onClick={() => router.push("/")}
-        className="flex cursor-pointer items-center gap-2"
+        className="group flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 transition-colors duration-200 hover:bg-white/5"
       >
-        <ChevronLeft />
-        <span className="font-manrope hidden text-2xl font-bold xl:block">
-          CALCULADORA FOCO SAÚDE ANIMAL
+        <ChevronLeft className="h-5 w-5 text-zinc-400 transition-colors group-hover:text-white" />
+        <span className="hidden text-sm font-semibold tracking-wide text-zinc-300 transition-colors group-hover:text-white md:block xl:text-base">
+          Calculadora de Medicamentos
         </span>
       </div>
+
+      {/* Center - Logo */}
       <Image
         src="/new-logo.png"
         alt="Logo Foco Saúde Animal"
         width={1000}
         height={500}
-        className="absolute left-1/2 top-1/2 h-12 w-max -translate-x-1/2 -translate-y-1/2 object-contain xl:h-16"
+        className="absolute left-1/2 top-1/2 h-8 w-auto -translate-x-1/2 -translate-y-1/2 object-contain xl:h-10"
       />
+
+      {/* Right - CTA */}
       <button
         onClick={() =>
           window.open(
@@ -31,17 +36,17 @@ export function Header() {
             "_blank",
           )
         }
-        className="font-manrope flex cursor-pointer items-center gap-2 rounded-lg bg-[#DC2626] px-2 py-2 text-sm font-bold text-white xl:px-8 xl:text-base"
+        className="flex items-center gap-2 rounded-full bg-[#DC2626] px-3 py-1.5 text-xs font-semibold text-white shadow-lg shadow-red-900/30 transition-all duration-200 hover:bg-[#ef4444] hover:shadow-red-900/50 active:scale-95 xl:px-5 xl:py-2 xl:text-sm"
       >
-        Fale Conosco
+        <span className="hidden sm:inline">Fale Conosco</span>
         <Image
           src="/whats-icon.png"
           alt="Ícone WhatsApp"
           width={250}
           height={250}
-          className="h-4 w-4 xl:h-6 xl:w-6"
+          className="h-4 w-4 xl:h-5 xl:w-5"
         />
       </button>
-    </div>
+    </header>
   );
 }
